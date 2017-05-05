@@ -1,0 +1,68 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+</head>
+
+<body ng-app="app" ng-controller="MainCtrl">
+
+
+
+    <body>
+        <nav class="navbar navbar-inverse">
+            <div class="container">
+                <div class="navbar-header"><a class="navbar-brand navbar-link" href="#">Kanban Drag & Drop
+</a>
+                    <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                </div>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active" role="presentation"><a href="#">First Item</a></li>
+                        <li role="presentation"><a href="#">Second Item</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+      
+        <div class="container">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" ng-repeat="list in lists ">
+                <div class="panel panel-info" >
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{list.label}}</h3>
+                    </div>
+                    <div class="panel-body"  ng-drop="true" ng-drop-success="onDropComplete($index,$data,$event)" >
+                        <div 
+                        class="alert alert-default" ng-drag="true" 
+                        ng-drag-data="el" 
+                        data-allow-transform="true"
+                        ng-drag-success="onDragComplete($index,$parent.$index,$data,$event)" 
+                        ng-repeat="el in list.people track by $index">
+                            {{$index}} - {{el.name}}
+                        </div>
+                         <div class="row">
+                               <form class="form-inline">
+                     
+                              <label class="sr-only" for="inlineFormInput">Name</label>
+  <input type="text" class="form-control" ng-model="newElement" placeholder="New Element">
+{{$parent.$index}}
+                              <button ng-click="new($index,newElement)" type="submit" class="btn btn-primary">Add</button>
+                           </form>
+                         </div>
+                      
+                    </div>
+                    </div>
+                 
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+        <script src="assets/js/angular.min.js"></script>
+        <script src="assets/js/ngDraggble.js"></script>
+        <script src="assets/js/app.js"></script>
+    </body>
+
+</html>
