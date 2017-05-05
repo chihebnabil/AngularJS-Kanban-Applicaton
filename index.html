@@ -32,7 +32,7 @@
                         <h3 class="panel-title">{{list.label}}</h3>
                     </div>
                     <div class="panel-body" ng-drop="true" ng-drop-success="onDropComplete($index,$data,$event)">
-                        <div class="alert alert-default" ng-drag="true" ng-drag-data="el" data-allow-transform="true" ng-drag-success="onDragComplete($index,$parent.$index,$data,$event)"
+                        <div class="alert alert-default item" ng-drag="true" ng-drag-data="el" data-allow-transform="true" ng-drag-success="onDragComplete($index,$parent.$index,$data,$event)"
                             ng-repeat="el in list.people track by $index">
                             {{$index}} - {{el.name}}
                         </div>
