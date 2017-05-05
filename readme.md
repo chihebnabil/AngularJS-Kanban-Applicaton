@@ -1,6 +1,6 @@
 AngularJS Kanban Applicaton
 ==
-Drag & Drop Angular Application Built with `AngularJS` ,`ngDraggble` and `Bootstrap`
+Drag & Drop Kanban Board Angular Application Built with `AngularJS` ,`ngDraggble` and `Bootstrap`
 
 Demo
 ====
