@@ -36,18 +36,14 @@
                             ng-repeat="el in list.people track by $index">
                             {{$index}} - {{el.name}}
                         </div>
-                        <div class="row">
-                            <div class="container">
- <form class="form-inline">
+                        
+ <form class="form-inline" ng-submit="new($index,newElement)">
                                 <div class="form-group">
 
-                                    <input type="text" class="form-control" ng-model="newElement" placeholder="New Element">
+                                    <input type="text" class="form-control"  ng-model="newElement" placeholder="New Element">
                                 </div>
-                                <button ng-click="new($index,newElement)" type="submit" class="btn btn-primary">Add</button>
                             </form>
-                            </div>
                            
-                        </div>
 
                     </div>
                 </div>
