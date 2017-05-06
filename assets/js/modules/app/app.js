@@ -14,7 +14,7 @@
         $rootScope.navbar = true
         var id = $routeParams.id
         var projects = JSON.parse(localStorage.getItem("projects"))
-
+        $rootScope.label = projects[id].label
         $scope.lists = projects[id].boards
 
 
