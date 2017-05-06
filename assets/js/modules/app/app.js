@@ -75,39 +75,42 @@
 
 
         $scope.newProject = function () {
-            $rootScope.projects.push({
-                label: $scope.projectName,
-                boards: [
-                    {
-                        "label": "Todo",
-                        "tasks": [
-                            {
-                                "name": "Task 1",
-                                "text": "Task 1 Text",
-                                "time": "00"
-                            }
+            if ($scope.projectName != "") {
+                $rootScope.projects.push({
+                    label: $scope.projectName,
+                    boards: [
+                        {
+                            "label": "Todo",
+                            "tasks": [
+                                {
+                                    "name": "Task 1",
+                                    "text": "Task 1 Text",
+                                    "time": "00"
+                                }
 
 
-                        ]
-                    },
-                    {
-                        "label": "Doing",
-                        "tasks": [
+                            ]
+                        },
+                        {
+                            "label": "Doing",
+                            "tasks": [
 
 
-                        ]
-                    },
-                    {
-                        "label": "Done",
-                        "tasks": [
+                            ]
+                        },
+                        {
+                            "label": "Done",
+                            "tasks": [
 
 
 
-                        ]
-                    }
-                ]
-            })
-            $scope.update($rootScope.projects)
+                            ]
+                        }
+                    ]
+                })
+                $scope.update($rootScope.projects)
+            }
+
 
         }
         $scope.remove = function (index) {
