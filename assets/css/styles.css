@@ -35,3 +35,6 @@
     width: 100% !important;
 
 }
+.navbar{
+        border-bottom: 1px solid cornflowerblue;
+}

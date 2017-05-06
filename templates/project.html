@@ -1,8 +1,8 @@
-        <div class="container" ng-controller="MainCtrl">
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" ng-repeat="list in lists track by $index">
+        <div class="container-fluid" ng-controller="MainCtrl">
+            <div class="col-lg-4 col-md-4 col-sm-4" ng-repeat="list in lists track by $index">
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h3 class="panel-title">{{list.label}}</h3>
+                        <h3 class="panel-title">{{list.label}} </h3>
                     </div>
                     <div class="panel-body" ng-drop="true" ng-drop-success="onDropComplete($index,$data,$event)">
                         <div class="alert alert-default item" ng-drag="true" ng-drag-data="el" data-allow-transform="true" ng-drag-success="onDragComplete($index,$parent.$index,$data,$event)"

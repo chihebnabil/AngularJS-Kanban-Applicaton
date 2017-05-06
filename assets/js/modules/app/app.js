@@ -32,6 +32,7 @@
             if (data != null) {
                 $scope.$apply(function () {
                     $scope.lists[index].tasks.push(data);
+                    $scope.update($scope.lists)
                 })
             }
 
@@ -91,11 +92,6 @@
                     {
                         "label": "Doing",
                         "tasks": [
-                            {
-                                "name": "Task 1",
-                                "text": "Task 1 Text",
-                                "time": "00"
-                            }
 
 
                         ]
@@ -103,11 +99,7 @@
                     {
                         "label": "Done",
                         "tasks": [
-                            {
-                                "name": "Task 1",
-                                "text": "Task 1 Text",
-                                "time": "00"
-                            }
+
 
 
                         ]
@@ -124,6 +116,17 @@
 
     }
 
+
+
+    angular
+        .module('app')
+        .controller('TimeCtrl', TimeCtrl)
+
+    /** @ngInject */
+    function TimeCtrl($scope, $rootScope) {
+
+
+    }
 
 
 
