@@ -7,3 +7,9 @@ It uses the browser's `localStorage` to save data
 Demo
 ====
 https://chihebnabil.github.io/AngularJS-Kanban-Applicaton/
+
+
+
+![project_manager](/project_manager.png)
+
+![task_manager](/task_manager.png)
