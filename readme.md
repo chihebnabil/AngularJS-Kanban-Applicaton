@@ -1,6 +1,6 @@
-AngularJS Kanban Applicaton
+Kanban Board Applicaton
 ==
-Kanban Board Angular Offline Project Manager Application Built with `AngularJS` ,`ngDraggble` and `Bootstrap`
+Offline Project and tasks Manager Application Built with `AngularJS` ,`ngDraggble` and `Bootstrap`
 
 Demo
 ====
