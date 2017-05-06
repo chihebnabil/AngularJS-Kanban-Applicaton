@@ -1,0 +1,27 @@
+        <div class="container-fluid" ng-controller="MainCtrl">
+            <div class="col-lg-4 col-md-4 col-sm-4" ng-repeat="list in lists track by $index">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{list.label}} </h3>
+                    </div>
+                    <div class="panel-body" ng-drop="true" ng-drop-success="onDropComplete($index,$data,$event)">
+                        <div class="alert alert-default item" ng-drag="true" ng-drag-data="el" data-allow-transform="true" ng-drag-success="onDragComplete($index,$parent.$index,$data,$event)"
+                            ng-repeat="el in list.tasks track by $index">
+                                    <button type="button" ng-click="remove($parent.$index,$index)" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+
+                            {{$index}} - {{el.name}}
+                        </div>
+
+                        <form class="form-inline" ng-submit="new($index,newElement)">
+                            <div class="form-group custom-input">
+
+                                <input type="text" class="form-control" ng-model="newElement" placeholder="Create New Task">
+                            </div>
+                        </form>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>

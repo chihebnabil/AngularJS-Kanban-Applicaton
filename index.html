@@ -1,65 +1,46 @@
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
-<body ng-app="app" ng-controller="MainCtrl">
+<body ng-app="app">
 
 
 
     <body>
-        <nav class="navbar navbar-inverse">
+        <nav class="navbar ">
             <div class="container">
-                <div class="navbar-header"><a class="navbar-brand navbar-link" href="#">Kanban Drag & Drop
+                <div class="navbar-header"><a class="navbar-brand navbar-link" href="#">Project Manager 
+                    <small ng-if="navbar">| {{label}}</small>
 </a>
                     <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
                 </div>
-                <div class="collapse navbar-collapse" id="navcol-1">
+                <div class="collapse navbar-collapse" id="navcol-1" ng-if="navbar">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active" role="presentation"><a href="#">First Item</a></li>
-                        <li role="presentation"><a href="#">Second Item</a></li>
+
+                        <li role="presentation"><a href="#!/time">Time Track</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
 
-        <div class="container">
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" ng-repeat="list in lists ">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">{{list.label}}</h3>
-                    </div>
-                    <div class="panel-body" ng-drop="true" ng-drop-success="onDropComplete($index,$data,$event)">
-                        <div class="alert alert-default item" ng-drag="true" ng-drag-data="el" data-allow-transform="true" ng-drag-success="onDragComplete($index,$parent.$index,$data,$event)"
-                            ng-repeat="el in list.people track by $index">
-                            {{$index}} - {{el.name}}
-                        </div>
-                        
- <form class="form-inline" ng-submit="new($index,newElement)">
-                                <div class="form-group">
-
-                                    <input type="text" class="form-control"  ng-model="newElement" placeholder="New Element">
-                                </div>
-                            </form>
-                           
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        </div>
 
 
 
 
-        <script src="assets/js/angular.min.js"></script>
-        <script src="assets/js/ngDraggble.js"></script>
-        <script src="assets/js/app.js"></script>
-        <script src="assets/js/factory.js"></script>
+        <ng-view></ng-view>
+
+
+        <script src="assets/js/libs/angular.min.js"></script>
+        <script src="assets/js/libs/ngDraggble.js"></script>
+        <script src="assets/js/libs/angular.route.min.js"></script>
+        <script src="assets/js/modules/app/app.js"></script>
+        <script src="assets/js/modules/app/routing.js"></script>
+
     </body>
 
 </html>
