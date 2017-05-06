@@ -21,3 +21,7 @@
 [ng-drop].drag-enter{
         border:solid 2px grey;
 }
+.alert-info a{
+        text-decoration: none;
+        color: white !important;
+}

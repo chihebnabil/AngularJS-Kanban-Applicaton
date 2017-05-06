@@ -1,0 +1,20 @@
+<div class="container" ng-controller="HomeCtrl">
+
+    <div class="col-md-6 col-md-offset-3 text-center">
+        <h1>Projects</h1>
+ <hr>
+        <div class="alert alert-info" ng-repeat="p in projects track by $index ">
+        <a href="#!/project/{{$index}}">{{p.label}}</a>
+        </div>
+        <hr>
+        <form >
+            <div class="form-group">
+                <input type="text" class="form-control" ng-model="projectName" placeholder="Project Name">
+
+            </div>
+            <button ng-click="newProject()" class="btn btn-primary btn-block">Create</button>
+        </form>
+
+    </div>
+
+</div>
