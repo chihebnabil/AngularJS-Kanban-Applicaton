@@ -5,6 +5,7 @@
         <small>Select Or Create New Project</small>
  <hr>
         <div class="alert alert-info" ng-repeat="p in projects track by $index ">
+        <button type="button" ng-click="remove($index)" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
         <a href="#!/project/{{$index}}">{{p.label}}</a>
         </div>
         <hr>

@@ -43,8 +43,9 @@
                 $scope.update($scope.lists)
             }
         }
-        $scope.remove = function (index) {
-
+        $scope.remove = function (parent, index) {
+            $scope.lists[parent].tasks.splice(index, 1);
+            $scope.update($scope.lists)
         }
         $scope.update = function (data) {
             projects[id].boards = data
@@ -106,9 +107,12 @@
                     }
                 ]
             })
-            console.log($rootScope.projects)
             $scope.update($rootScope.projects)
 
+        }
+        $scope.remove = function (index) {
+            $rootScope.projects.splice(index, 1);
+            $scope.update($rootScope.projects)
         }
         $scope.update = function (data) {
             localStorage.setItem('projects', JSON.stringify(data))

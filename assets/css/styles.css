@@ -25,13 +25,16 @@
         text-decoration: none;
         color: white !important;
 }
+.alert-default button.close{
+ color: grey;
+}
 .custom-input{
     width: 100% !important;
 }
 .custom-input input{
     height: 30px !important;
     line-height: 30px !important;
-    font-size: 10px !important;
+    font-size: 13px !important;
     width: 100% !important;
 
 }
