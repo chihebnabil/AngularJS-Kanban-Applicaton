@@ -6,8 +6,8 @@ It uses the browser's `localStorage` to save data
 
 To-do
 =======
-Firebase Integration
-
+- Firebase Integration
+- Time Manager 
 Demo
 ====
 https://chihebnabil.github.io/AngularJS-Kanban-Applicaton/
