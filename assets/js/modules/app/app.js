@@ -1,8 +1,17 @@
 (function () {
     'use strict';
+    var config = {
+        apiKey: "AIzaSyAAghCvO6oB9Pnv1zmQUu7HZMEiKtXdSMQ",
+        authDomain: "todos-87616.firebaseapp.com",
+        databaseURL: "https://todos-87616.firebaseio.com",
+        projectId: "todos-87616",
+        storageBucket: "",
+        messagingSenderId: "9187514965"
+    };
+    firebase.initializeApp(config);
 
     angular
-        .module('app', ['ngDraggable', "ngRoute"]);
+        .module('app', ['ngDraggable', "ngRoute", "firebase"]);
 
 
     angular
@@ -10,9 +19,12 @@
         .controller('MainCtrl', MainCtrl)
 
     /** @ngInject */
-    function MainCtrl($scope, $rootScope, $routeParams) {
+    function MainCtrl($scope, $rootScope, $routeParams, $firebaseObject) {
         $rootScope.navbar = true
         var id = $routeParams.id
+
+        // var ref = firebase.database().ref();
+        // console.log($firebaseObject(ref))
         var projects = JSON.parse(localStorage.getItem("projects"))
         $rootScope.label = projects[id].label
         $scope.lists = projects[id].boards
@@ -62,7 +74,7 @@
         .controller('HomeCtrl', HomeCtrl)
 
     /** @ngInject */
-    function HomeCtrl($scope, $rootScope) {
+    function HomeCtrl($scope, $rootScope, $firebaseObject) {
         $rootScope.navbar = false
 
         if (JSON.parse(localStorage.getItem("projects")) == null) {
@@ -135,6 +147,31 @@
 
     }
 
+    angular
+        .module('app')
+        .controller('AuthCtrl', AuthCtrl)
+
+    /** @ngInject */
+    function AuthCtrl($scope, $rootScope, $firebaseAuth) {
+        $scope.email = ""
+        $scope.password = ""
+        $scope.login = function () {
+            $firebaseAuth().$signInWithEmailAndPassword($scope.email, $scope.password).then(function (firebaseUser) {
+                console.log("Signed in as:", firebaseUser.uid);
+            }).catch(function (error) {
+                console.error("Authentication failed:", error);
+            });
+
+        }
+        $scope.GoogleLogin = function () {
+            $firebaseAuth().$signInWithPopup("google").then(function (result) {
+                console.log("Signed in as:", result.user.uid);
+            }).catch(function (error) {
+                console.error("Authentication failed:", error);
+            });
+        }
+
+    }
 
 
 }());

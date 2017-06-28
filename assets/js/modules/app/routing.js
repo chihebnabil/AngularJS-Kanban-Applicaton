@@ -17,6 +17,9 @@
              .when("/time", {
                 templateUrl: "templates/time.html"
             })
+            .when("/login", {
+                templateUrl: "templates/login.html"
+            })
     }
 
 }());
