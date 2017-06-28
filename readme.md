@@ -8,6 +8,7 @@ To-do
 =======
 - Firebase Integration
 - Time Manager 
+
 Demo
 ====
 https://chihebnabil.github.io/AngularJS-Kanban-Applicaton/
