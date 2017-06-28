@@ -4,6 +4,10 @@ Offline Project and tasks Manager Application Built with `AngularJS` ,`ngDraggbl
 
 It uses the browser's `localStorage` to save data
 
+To-do
+=======
+Firebase Integration
+
 Demo
 ====
 https://chihebnabil.github.io/AngularJS-Kanban-Applicaton/
