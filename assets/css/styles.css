@@ -46,3 +46,6 @@ body{
         border-bottom: 1px solid cornflowerblue;
         background: white
 }
+input.ng-touched.ng-invalid {
+   border:1px solid red;
+}
