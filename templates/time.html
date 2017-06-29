@@ -1,6 +1,13 @@
 <div class="container" ng-controller="TimeCtrl">
 
     <div class="jumbotron">
-        <p>WIP</p>
+        <p>Time Tracker</p>
+        <p>
+
+            <timer autostart="false" interval="1000">{{hhours}} hour{{hhoursS}}, {{mminutes}} minute{{minutesS}}, {{sseconds}} second{{secondsS}}.</timer>
+            <button class="btn" ng-click="startTimer()" type="button">Start</button>
+            <button class="btn" ng-click="stopTimer()" type="button">Stop</button>
+            <button class="btn" ng-click="resumeTimer()" type="button">Resume</button>
+        </p>
     </div>
 </div>
