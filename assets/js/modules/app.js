@@ -16,10 +16,10 @@
      * Main App Module
      */
     angular
-        .module('app', ['ngDraggable', "ngRoute", "AUTH"]);
+        .module('app', ['ngDraggable', "ngRoute", "AUTH",'TRACKER']);
 
     /**
-     * Controllers 
+     * Main  Controllers 
      */
     angular
         .module('app')
