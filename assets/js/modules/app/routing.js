@@ -1,6 +1,8 @@
 (function () {
     'use strict';
-
+    /**
+     * Routing
+     */
     angular
         .module('app')
         .config(ConfigRoutes)
@@ -14,12 +16,18 @@
             .when("/project/:id", {
                 templateUrl: "templates/project.html"
             })
-             .when("/time", {
+            .when("/time", {
                 templateUrl: "templates/time.html"
             })
             .when("/login", {
                 templateUrl: "templates/login.html"
             })
+            .when("/register", {
+                templateUrl: "templates/register.html"
+            })
+            .otherwise({
+                templateUrl: "templates/login.html"
+            });
     }
 
 }());

@@ -1,5 +1,8 @@
 (function () {
     'use strict';
+    /**
+     * Firebase Config
+     */
     var config = {
         apiKey: "AIzaSyAAghCvO6oB9Pnv1zmQUu7HZMEiKtXdSMQ",
         authDomain: "todos-87616.firebaseapp.com",
@@ -9,22 +12,31 @@
         messagingSenderId: "9187514965"
     };
     firebase.initializeApp(config);
-
+    /**
+     * Main App Module
+     */
     angular
         .module('app', ['ngDraggable', "ngRoute", "firebase"]);
 
-
+    /**
+     * Controllers 
+     */
     angular
         .module('app')
         .controller('MainCtrl', MainCtrl)
 
     /** @ngInject */
-    function MainCtrl($scope, $rootScope, $routeParams, $firebaseObject) {
+    function MainCtrl($scope, $rootScope, $routeParams, $firebaseObject, $firebaseAuth, $location) {
         $rootScope.navbar = true
         var id = $routeParams.id
+        $scope.authObj = $firebaseAuth();
+        var firebaseUser = $scope.authObj.$getAuth();
+        if (firebaseUser) {
 
-        // var ref = firebase.database().ref();
-        // console.log($firebaseObject(ref))
+        } else {
+            $location.path('/login');
+        }
+        console.log(firebaseUser)
         var projects = JSON.parse(localStorage.getItem("projects"))
         $rootScope.label = projects[id].label
         $scope.lists = projects[id].boards
@@ -66,16 +78,20 @@
 
     }
 
-
-
-
     angular
         .module('app')
         .controller('HomeCtrl', HomeCtrl)
 
     /** @ngInject */
-    function HomeCtrl($scope, $rootScope, $firebaseObject) {
+    function HomeCtrl($scope, $rootScope, $firebaseObject, $firebaseAuth, $location, $firebaseArray) {
         $rootScope.navbar = false
+        $scope.authObj = $firebaseAuth();
+        var firebaseUser = $scope.authObj.$getAuth();
+        if (firebaseUser) {
+
+        } else {
+            $location.path('/login');
+        }
 
         if (JSON.parse(localStorage.getItem("projects")) == null) {
             $rootScope.projects = []
@@ -131,6 +147,12 @@
         }
         $scope.update = function (data) {
             localStorage.setItem('projects', JSON.stringify(data))
+
+            var ref = firebase.database().ref().child("projects").child(firebaseUser.uid);
+            var list = $firebaseArray(ref);
+            list.$add(data).then(function (ref) {
+
+            });
         }
 
     }
@@ -152,20 +174,35 @@
         .controller('AuthCtrl', AuthCtrl)
 
     /** @ngInject */
-    function AuthCtrl($scope, $rootScope, $firebaseAuth) {
+    function AuthCtrl($scope, $rootScope, $firebaseAuth, $location) {
         $scope.email = ""
         $scope.password = ""
         $scope.login = function () {
             $firebaseAuth().$signInWithEmailAndPassword($scope.email, $scope.password).then(function (firebaseUser) {
                 console.log("Signed in as:", firebaseUser.uid);
+                $location.path('/');
             }).catch(function (error) {
                 console.error("Authentication failed:", error);
             });
+
+
+
+
+        }
+        $scope.register = function () {
+            $firebaseAuth().$createUserWithEmailAndPassword($scope.email, $scope.password)
+                .then(function (firebaseUser) {
+                    console.log("User " + firebaseUser.uid + " created successfully!");
+                    $location.path('/login');
+                }).catch(function (error) {
+                    console.error("Error: ", error);
+                });
 
         }
         $scope.GoogleLogin = function () {
             $firebaseAuth().$signInWithPopup("google").then(function (result) {
                 console.log("Signed in as:", result.user.uid);
+                $location.path('/');
             }).catch(function (error) {
                 console.error("Authentication failed:", error);
             });
