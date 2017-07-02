@@ -3,13 +3,13 @@
     <div class="jumbotron  col-md-6 col-md-offset-3 text-center">
         <h2>Projects</h2>
         <small>Select Or Create New Project</small>
- <hr>
+        <hr>
         <div class="alert alert-info" ng-repeat="p in projects track by $index ">
-        <button type="button" ng-click="remove($index)" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-        <a href="#!/project/{{$index}}">{{p.label}}</a>
+            <button type="button" ng-click="remove($index)" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <a href="#!/project/{{$index}}">{{p.label}}</a>
         </div>
         <hr>
-        <form >
+        <form>
             <div class="form-group">
                 <input type="text" class="form-control" ng-model="projectName" placeholder="Project Name">
 

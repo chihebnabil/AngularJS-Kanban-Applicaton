@@ -1,0 +1,25 @@
+{
+  "name": "firebase-kanban-app",
+  "version": "1.0.0",
+  "description": "Kanban Board Applicaton == Offline Project & Tasks Manager Application Built with `AngularJS`  ,`ngDraggble` and `AngularFire`",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chihebnabil/AngularJS-Kanban-Applicaton.git"
+  },
+  "author": "Chiheb Nabil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chihebnabil/AngularJS-Kanban-Applicaton/issues"
+  },
+  "homepage": "https://github.com/chihebnabil/AngularJS-Kanban-Applicaton#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-minify": "^1.0.0",
+    "gulp-ng-annotate": "^2.0.0",
+    "gulp-webserver": "^0.9.1"
+  }
+}

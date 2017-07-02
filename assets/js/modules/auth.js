@@ -4,14 +4,11 @@
      *  Firebase Auth Module
      */
 
-    angular
-        .module('AUTH', ["ngRoute", "firebase"]);
-    angular
-        .module('AUTH')
-        .controller('AuthCtrl', AuthCtrl)
+    var AUTH = angular.module('AUTH', ["ngRoute", "firebase"]);
 
     /** @ngInject */
-    function AuthCtrl($scope, $rootScope, $firebaseAuth, $location) {
+    AUTH.controller('AuthCtrl', function AuthCtrl($scope, $rootScope, $firebaseAuth, $location) {
+        var vm = this;
         $scope.email = ""
         $scope.password = ""
         $scope.login = function () {
@@ -46,6 +43,6 @@
         }
 
     }
-
+    )
 
 }());
