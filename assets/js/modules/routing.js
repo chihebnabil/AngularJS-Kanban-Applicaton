@@ -1,14 +1,12 @@
 (function () {
-    'use strict';
+  
     /**
      * Routing
      */
-    angular
-        .module('app')
-        .config(ConfigRoutes)
+ app.config(ConfigRoutes)
 
     /** @ngInject */
-    function ConfigRoutes($routeProvider) {
+   function ConfigRoutes($routeProvider) {
         $routeProvider
             .when("/", {
                 templateUrl: "templates/home.html"
@@ -29,5 +27,5 @@
                 templateUrl: "templates/login.html"
             });
     }
-
+    
 }());

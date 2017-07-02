@@ -4,13 +4,12 @@
      *  Firebase Time Tracker Module
      */
 
-    angular
-        .module('TRACKER', ["ngRoute", "firebase", "timer"]);
+    var TRACKER = angular.module('TRACKER', ['ngRoute', 'firebase', 'timer']);
 
-    angular
-        .module('TRACKER')
-        .controller('TimeCtrl', TimeCtrl)
-    function TimeCtrl($scope, $rootScope, $firebaseAuth, $location) {
+   
+    /** @ngInject */
+    TRACKER.controller('TimeCtrl', function TimeCtrl($scope, $rootScope, $firebaseAuth, $location) {
+        var vm = this;
 
         $scope.startTimer = function (deadline) {
             $scope.$broadcast('timer-start');
@@ -20,14 +19,14 @@
 
         $scope.resumeTimer = function () {
             $scope.$broadcast('timer-resume');
- 
+
             $scope.deadlineMillis = 0;
             $scope.timerRunning = false;
         };
-         $scope.stopTimer = function () {
+        $scope.stopTimer = function () {
             $scope.$broadcast('timer-stop');
-    
-          //  $scope.deadlineMillis = 0;
+
+            //  $scope.deadlineMillis = 0;
             $scope.timerRunning = true;
         };
 
@@ -39,8 +38,7 @@
 
     }
 
-
-
+    )
 
 
 }());

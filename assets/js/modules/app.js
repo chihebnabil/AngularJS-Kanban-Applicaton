@@ -12,21 +12,18 @@
         messagingSenderId: "9187514965"
     };
     firebase.initializeApp(config);
+
+
     /**
      * Main App Module
      */
-    angular
-        .module('app', ['ngDraggable', "ngRoute", "AUTH",'TRACKER']);
+    var app = angular.module('app', ["ngRoute","ngDraggable","AUTH", "TRACKER"]);
 
-    /**
-     * Main  Controllers 
-     */
-    angular
-        .module('app')
-        .controller('MainCtrl', MainCtrl)
+
 
     /** @ngInject */
-    function MainCtrl($scope, $rootScope, $routeParams, $firebaseObject, $firebaseAuth, $location) {
+    app.controller('MainCtrl', function ($scope, $rootScope, $routeParams, $firebaseObject, $firebaseAuth, $location) {
+
         $rootScope.navbar = true
         var id = $routeParams.id
         $scope.authObj = $firebaseAuth();
@@ -76,14 +73,12 @@
             localStorage.setItem('projects', JSON.stringify(projects))
         }
 
-    }
+    });
 
-    angular
-        .module('app')
-        .controller('HomeCtrl', HomeCtrl)
 
     /** @ngInject */
-    function HomeCtrl($scope, $rootScope, $firebaseObject, $firebaseAuth, $location, $firebaseArray) {
+    app.controller('HomeCtrl', function ($scope, $rootScope, $firebaseObject, $firebaseAuth, $location, $firebaseArray) {
+
         $rootScope.navbar = false
         $scope.authObj = $firebaseAuth();
         var firebaseUser = $scope.authObj.$getAuth();
@@ -150,15 +145,11 @@
 
             var ref = firebase.database().ref().child("projects").child(firebaseUser.uid);
             var list = $firebaseArray(ref);
-            list.$add(data).then(function (ref) {
-
-            });
+         
         }
 
-    }
+    });
 
 
-
- 
 
 }());

@@ -2,12 +2,12 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <title>Kanban Board Applicaton</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
-<body ng-app="app">
+<body ng-app="app" ng-strict-di>
 
 
 
@@ -34,23 +34,25 @@
 
         <ng-view></ng-view>
         <!-- Libs -->
+        <!--
         <script src="assets/js/libs/angular.min.js"></script>
-        <script src="assets/js/libs/ngDraggble.js"></script>
+        -->
+        <script src="assets/js/libs/angular.js"></script>
         <script src="assets/js/libs/angular.route.min.js"></script>
         <script src="assets/js/libs/angular-timer.js"></script>
-
+        <script src="assets/js/libs/ngDraggble.js"></script>
+        <!-- angular timer dependencies -->
         <script src="https://momentjs.com/downloads/moment.js"></script>
         <script src="assets/js/libs/humanize-duration.js"></script>
-
         <!-- Firebase -->
-        <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+        <script src="assets/js/libs/firebase.js"></script>
         <!-- AngularFire -->
-        <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+        <script src="assets/js/libs/angularfire.min.js"></script>
         <!-- Modules -->
-        <script src="assets/js/modules/app.js"></script>
-        <script src="assets/js/modules/routing.js"></script>
-        <script src="assets/js/modules/auth.js"></script>
-        <script src="assets/js/modules/tracker.js"></script>
+        <script src="dist/js/auth.min.js"></script>
+        <script src="dist/js/tracker.min.js"></script>
+        <script src="dist/js/app.min.js"></script>
+        <script src="dist/js/routing.min.js"></script>
     </body>
 
 </html>
