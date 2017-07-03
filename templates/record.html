@@ -15,12 +15,12 @@
 
             </div>
             <div class="btn-group" role="group">
-                <button type="button" ng-click="startTimer()" class="btn btn-success ">Record</button>
-                <button type="button" ng-click="resumeTimer()" class="btn btn-default ">Resume</button>
-                <button type="button" ng-click="stopTimer()" class="btn btn-danger ">Stop</button>
+                <button type="button" ng-disabled="start" ng-click="startTimer()" class="btn btn-success ">Record</button>
+                <button type="button" ng-click="save()" class="btn btn-danger ">Save</button>
+                <button type="button" ng-disabled="!start"  ng-click="stopTimer()" class="btn btn-default ">Reset</button>
             </div>
             <hr>
-            <a href="" ng-click="dashboard()">dashboard</a>
+            <a href="" ng-click="dashboard()">Dashboard</a>
         </form>
     </div>
 </div>
