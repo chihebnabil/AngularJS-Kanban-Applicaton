@@ -2,84 +2,83 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kanban Board Applicaton</title>
+    <title>Taskii</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body ng-app="app">
 
-
-
-    <body>
-        <nav class="navbar ">
-            <div class="container">
-                <div class="navbar-header"><a class="navbar-brand navbar-link" href="#">Project Manager 
+    <nav class="navbar ">
+        <div class="container">
+            <div class="navbar-header"><a class="navbar-brand navbar-link" href="#">Taskii 
                     <small ng-if="navbar">| {{label}}</small>
 </a>
-                    <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                </div>
-                <div class="collapse navbar-collapse" id="navcol-1" ng-if="navbar">
-                    <ul class="nav navbar-nav navbar-right">
-
-                        <li role="presentation"><a href="#!/time">Time Track</a></li>
-                        <li role="presentation"><a target="__blank" href="#!/">Tasks</a></li>
-
-                    </ul>
-                </div>
+                <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
             </div>
-        </nav>
+            <div class="collapse navbar-collapse" id="navcol-1" ng-if="navbar">
+                <ul class="nav navbar-nav navbar-right">
 
+                    <li role="presentation"><a href="#!/time">Time Track</a></li>
+                    <li role="presentation"><a target="__blank" href="#!/">Tasks</a></li>
 
-<div class="container" ng-controller="HomeCtrl">
-
-    <div class="jumbotron  col-md-6 col-md-offset-3 text-center">
-        <h2>Projects</h2>
-        <small>Select Or Create New Project</small>
-        <hr>
-        <div class="alert alert-info" ng-repeat="p in projects track by $index ">
-            <button type="button" ng-click="remove($index)" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-            <a href="#!/project/{{$index}}">{{p.label}}</a>
+                </ul>
+            </div>
         </div>
-        <hr>
-        <form>
-            <div class="form-group">
-                <input type="text" class="form-control" ng-model="projectName" placeholder="Project Name">
+    </nav>
 
+
+    <div class="container" ng-controller="HomeCtrl">
+
+        <div class="jumbotron  col-md-6 col-md-offset-3 text-center">
+            <h2>Projects</h2>
+            <small>Select Or Create New Project</small>
+            <hr>
+            <div class="alert alert-info" ng-repeat="p in projects track by $index ">
+                <button type="button" ng-click="remove($index)" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <a href="#!/project/{{$index}}">{{p.label}}</a>
             </div>
-            <button ng-click="newProject()" class="btn btn-info btn-block">Create</button>
-        </form>
+            <hr>
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="projectName" placeholder="Project Name">
+
+                </div>
+                <button ng-click="newProject()" class="btn btn-info btn-block">Create</button>
+            </form>
+
+        </div>
 
     </div>
 
-</div>
 
 
-      
-        <!-- Libs -->
-        <!--
+    <!-- Libs -->
+    <!--
         <script src="assets/js/libs/angular.min.js"></script>
         -->
-        <script src="assets/js/libs/angular.js"></script>
-        <script src="assets/js/libs/angular.route.min.js"></script>
-        <script src="assets/js/libs/angular-timer.js"></script>
-        <script src="assets/js/libs/ngDraggble.js"></script>
-        <!-- angular timer dependencies -->
-        <script src="assets/js/libs/moment.js"></script>
-        <script src="assets/js/libs/humanize-duration.js"></script>
-        <!-- Firebase -->
-        <script src="assets/js/libs/firebase.js"></script>
-        <!-- AngularFire -->
-        <script src="assets/js/libs/angularfire.min.js"></script>
-        <!-- Utils -->
-        <script src="assets/js/functions.js"></script>
-        <!-- Services -->
-        <script src="assets/js/services/storage.js"></script>
-        <!-- Modules -->
-        <script src="assets/js/modules/auth.js"></script>
-        <script src="assets/js/modules/tracker.js"></script>
-        <script src="assets/js/modules/app.js"></script>
-        <script src="assets/js/modules/routing.js"></script>
-    </body>
+
+    <script src="assets/js/libs/angular.js"></script>
+    <script src="assets/js/libs/angular.route.min.js"></script>
+
+    <script src="assets/js/libs/ngDraggble.js"></script>
+    <!-- Firebase -->
+    <script src="assets/js/libs/firebase.js"></script>
+    <!-- AngularFire -->
+    <script src="assets/js/libs/angularfire.min.js"></script>
+    <script src="assets/js/vars.js"></script>
+    <!-- Modules -->
+    <script src="assets/js/modules/app.js"></script>
+    <script src="assets/js/modules/routing.js"></script>
+    <script src="assets/js/modules/auth.js"></script>
+    <script src="assets/js/modules/tracker.js"></script>
+
+
+    <!-- Services -->
+    <script src="assets/js/services/storage.js"></script>
+    <!-- Directives -->
+    <script src="assets/js/directives/timer.js"></script>
+
+</body>
 
 </html>

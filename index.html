@@ -2,63 +2,59 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kanban Board Applicaton</title>
+    <title>Taskii</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body ng-app="app">
 
-
-
-    <body>
-        <nav class="navbar ">
-            <div class="container">
-                <div class="navbar-header"><a class="navbar-brand navbar-link" href="#">Project Manager 
+    <nav class="navbar ">
+        <div class="container">
+            <div class="navbar-header"><a class="navbar-brand navbar-link" href="#">Taskii 
                     <small ng-if="navbar">| {{label}}</small>
 </a>
-                    <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                </div>
-                <div class="collapse navbar-collapse" id="navcol-1" ng-if="navbar">
-                    <ul class="nav navbar-nav navbar-right">
-
-                        <li role="presentation"><a href="#!/record">Time Track</a></li>
-                    </ul>
-                </div>
+                <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
             </div>
-        </nav>
+            <div class="collapse navbar-collapse" id="navcol-1" ng-if="navbar">
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li role="presentation"><a href="#!/record">Time Track</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
 
 
 
 
-        <ng-view></ng-view>
-        <!-- Libs -->
-        <!--
+    <ng-view></ng-view>
+    <!-- Libs -->
+    <!--
         <script src="assets/js/libs/angular.min.js"></script>
         -->
-        <script src="assets/js/libs/angular.js"></script>
-        <script src="assets/js/libs/angular.route.min.js"></script>
 
-        <script src="assets/js/libs/ngDraggble.js"></script>
+    <script src="assets/js/libs/angular.js"></script>
+    <script src="assets/js/libs/angular.route.min.js"></script>
 
-       
+    <script src="assets/js/libs/ngDraggble.js"></script>
+    <!-- Firebase -->
+    <script src="assets/js/libs/firebase.js"></script>
+    <!-- AngularFire -->
+    <script src="assets/js/libs/angularfire.min.js"></script>
+    <script src="assets/js/vars.js"></script>
+    <!-- Modules -->
+    <script src="assets/js/modules/app.js"></script>
+    <script src="assets/js/modules/routing.js"></script>
+    <script src="assets/js/modules/auth.js"></script>
+    <script src="assets/js/modules/tracker.js"></script>
 
-        <!-- Firebase -->
-        <script src="assets/js/libs/firebase.js"></script>
-        <!-- AngularFire -->
-        <script src="assets/js/libs/angularfire.min.js"></script>
 
-        <!-- Modules -->
-         <script src="assets/js/modules/app.js"></script>
-        <script src="assets/js/modules/auth.js"></script>
-        <script src="assets/js/modules/tracker.js"></script>
-       
-        <script src="assets/js/modules/routing.js"></script>
-        <!-- Services -->
-        <script src="assets/js/services/storage.js"></script>
-        <!-- Directives -->
-        <script src="assets/js/directives/timer.js"></script>
-    </body>
+    <!-- Services -->
+    <script src="assets/js/services/storage.js"></script>
+    <!-- Directives -->
+    <script src="assets/js/directives/timer.js"></script>
+</body>
 
 </html>

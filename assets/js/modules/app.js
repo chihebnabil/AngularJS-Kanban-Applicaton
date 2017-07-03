@@ -12,15 +12,8 @@
         messagingSenderId: "9187514965"
     };
     firebase.initializeApp(config);
-    var app;
-
-    /**
-     * Main App Module
-     */
-    app = angular.module('app', ["ngRoute", "ngDraggable", "AUTH", "TRACKER"]);
-
-
-
+   
+    
     /** @ngInject */
     app.controller('MainCtrl', function ($scope, $rootScope, $routeParams, $firebaseObject, $firebaseAuth, $location, Storage) {
 

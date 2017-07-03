@@ -4,7 +4,7 @@
      *  Firebase Auth Module
      */
 
-    var AUTH = angular.module('AUTH', ["ngRoute", "firebase"]);
+   
 
     /** @ngInject */
     AUTH.controller('AuthCtrl', function AuthCtrl($scope, $rootScope, $firebaseAuth, $location) {

@@ -1,10 +1,11 @@
 (function () {
-  
+   'use strict';
     /**
      * Routing
      */
- app.config(ConfigRoutes)
-
+   
+  
+  ROUTING.config(ConfigRoutes);
     /** @ngInject */
    function ConfigRoutes($routeProvider) {
         $routeProvider

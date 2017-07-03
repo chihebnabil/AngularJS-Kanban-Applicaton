@@ -1,14 +1,11 @@
+
 (function () {
     'use strict';
     /**
      *  Firebase Time Tracker Module
      */
-
-    var TRACKER = angular.module('TRACKER', ['ngRoute', 'firebase']);
-
-
     /** @ngInject */
-    TRACKER.controller('TimeCtrl', function TimeCtrl($scope, $rootScope, $firebaseAuth, $location) {
+    TRACKER.controller('TimeCtrl', function TimeCtrl($scope, $rootScope, $firebaseAuth, $location,Storage) {
         var vm = this;
         $rootScope.navbar = false
 
@@ -35,7 +32,6 @@
     
 
         // Link to dashboard
-
         $scope.dashboard = function () {
             if (chrome.tabs) {
                 chrome.tabs.create({ url: chrome.extension.getURL('dashboard.html') });
