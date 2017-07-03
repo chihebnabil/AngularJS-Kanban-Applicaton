@@ -31,7 +31,7 @@
 
         };
         $scope.stopTimer = function () {
-
+            $scope.start = false;
         };
         $scope.save = function () {
 
