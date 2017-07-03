@@ -6,8 +6,8 @@ var minify = require('gulp-minify');
 var ngAnnotate = require('gulp-ng-annotate');
 var webserver = require('gulp-webserver');
 
-gulp.task('min', function () {
-    gulp.src('./dist/*.js')
+gulp.task('min', ['annotate'], function () {
+    gulp.src('./dist/js/*.js')
         .pipe(minify({
             ext: {
                 src: '.js',
@@ -27,7 +27,7 @@ gulp.task('annotate', function () {
             add: true,
             single_quotes: true
         }))
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('dist/js'));
 });
 
 gulp.task('all', ['annotate', 'min']);
