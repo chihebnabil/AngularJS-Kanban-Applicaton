@@ -5,7 +5,7 @@
      *  Firebase Time Tracker Module
      */
     /** @ngInject */
-    TRACKER.controller('TimeCtrl', function TimeCtrl($scope, $rootScope, $firebaseAuth, $location,Storage) {
+    TRACKER.controller('TimeCtrl', function TimeCtrl($scope, $rootScope, $firebaseAuth, $location, Storage) {
         var vm = this;
         $rootScope.navbar = false
 
@@ -13,8 +13,13 @@
         $scope.$watch('start', function (start) {
             Storage.set('start', start);
             if (chrome.browserAction) {
-              //  chrome.browserAction.setIcon({ path: "icon" + (start ? "-on" : "") + ".png" });
+                //  chrome.browserAction.setIcon({ path: "icon" + (start ? "-on" : "") + ".png" });
             }
+        });
+
+        Storage.get('start').then(function (start) {
+            $scope.loaded = true;
+            $scope.start = start;
         });
 
         $scope.startTimer = function () {
@@ -23,13 +28,16 @@
         };
 
         $scope.resumeTimer = function () {
-      
+
         };
         $scope.stopTimer = function () {
-         
+
+        };
+        $scope.save = function () {
+
         };
 
-    
+
 
         // Link to dashboard
         $scope.dashboard = function () {
