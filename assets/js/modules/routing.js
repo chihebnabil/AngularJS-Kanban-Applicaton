@@ -9,19 +9,19 @@
    function ConfigRoutes($routeProvider) {
         $routeProvider
             .when("/", {
-                templateUrl: "templates/home.html"
+                templateUrl: "templates/record.html"
             })
             .when("/project/:id", {
                 templateUrl: "templates/project.html"
-            })
-            .when("/time", {
-                templateUrl: "templates/time.html"
             })
             .when("/login", {
                 templateUrl: "templates/login.html"
             })
             .when("/register", {
                 templateUrl: "templates/register.html"
+            })
+            .when("/record", {
+                templateUrl: "templates/record.html"
             })
             .otherwise({
                 templateUrl: "templates/login.html"

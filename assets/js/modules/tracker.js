@@ -4,38 +4,45 @@
      *  Firebase Time Tracker Module
      */
 
-    var TRACKER = angular.module('TRACKER', ['ngRoute', 'firebase', 'timer']);
+    var TRACKER = angular.module('TRACKER', ['ngRoute', 'firebase']);
 
-   
+
     /** @ngInject */
     TRACKER.controller('TimeCtrl', function TimeCtrl($scope, $rootScope, $firebaseAuth, $location) {
         var vm = this;
+        $rootScope.navbar = false
 
-        $scope.startTimer = function (deadline) {
-            $scope.$broadcast('timer-start');
-            $scope.timerRunning = true;
-            $scope.deadlineMillis += deadline * 1000 * 60;
-        };
-
-        $scope.resumeTimer = function () {
-            $scope.$broadcast('timer-resume');
-
-            $scope.deadlineMillis = 0;
-            $scope.timerRunning = false;
-        };
-        $scope.stopTimer = function () {
-            $scope.$broadcast('timer-stop');
-
-            //  $scope.deadlineMillis = 0;
-            $scope.timerRunning = true;
-        };
-
-        $scope.$on('timer-tick', function (event, data) {
-            if ($scope.timerRunning && data.millis >= $scope.deadlineMillis) {
-                $scope.$apply($scope.timeOver);
+        // Change icon when timer is started
+        $scope.$watch('start', function (start) {
+            Storage.set('start', start);
+            if (chrome.browserAction) {
+              //  chrome.browserAction.setIcon({ path: "icon" + (start ? "-on" : "") + ".png" });
             }
         });
 
+        $scope.startTimer = function () {
+            $scope.start = Date.now();
+
+        };
+
+        $scope.resumeTimer = function () {
+      
+        };
+        $scope.stopTimer = function () {
+         
+        };
+
+    
+
+        // Link to dashboard
+
+        $scope.dashboard = function () {
+            if (chrome.tabs) {
+                chrome.tabs.create({ url: chrome.extension.getURL('dashboard.html') });
+            } else {
+                window.location = "dashboard.html";
+            }
+        };
     }
 
     )

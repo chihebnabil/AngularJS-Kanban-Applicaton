@@ -30,13 +30,11 @@ gulp.task('annotate', function () {
         .pipe(gulp.dest('dist/js'));
 });
 
-gulp.task('all', ['annotate', 'min']);
-
 /**
  * Live Reload Server
  */
 
-gulp.task('serve', ['all'], function () {
+gulp.task('serve', ['annotate', 'min'], function () {
     return gulp.src('./')
         .pipe(webserver({
             fallback: './index.html',

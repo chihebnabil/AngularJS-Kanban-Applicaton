@@ -8,13 +8,18 @@
 
     /** @ngInject */
     AUTH.controller('AuthCtrl', function AuthCtrl($scope, $rootScope, $firebaseAuth, $location) {
-        var vm = this;
-        $scope.email = ""
-        $scope.password = ""
+        $scope.email = "chiheb.design@gmail.com"
+        $scope.password = "12345678"
+        $scope.authObj = $firebaseAuth();
+        var firebaseUser = $scope.authObj.$getAuth();
+        if (firebaseUser) {
+            $location.path('/record');
+        }
         $scope.login = function () {
+            console.log('clicked login')
             $firebaseAuth().$signInWithEmailAndPassword($scope.email, $scope.password).then(function (firebaseUser) {
                 console.log("Signed in as:", firebaseUser.uid);
-                $location.path('/');
+                $location.path('/record');
             }).catch(function (error) {
                 console.error("Authentication failed:", error);
             });

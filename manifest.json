@@ -1,12 +1,12 @@
 {
-    "name": "Time Tracker",
+    "name": "Taskii - Time Tracker",
     "description": "Allow time tracking from the browser with syncing ability thanks to chrome sync storage",
     "version": "0.1",
     "browser_action": {
         "name": "Click to open the timer",
         "default_title": "Open Timer",
         "default_icon": "icon.png",
-        "default_popup": "index.html"
+        "default_popup": "popup.html"
     },
     "icons": { "16": "assets/img/icon16.png",
         "48": "assets/img/icon48.png",
