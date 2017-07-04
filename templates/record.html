@@ -16,7 +16,7 @@
             </div>
             <div class="btn-group" role="group">
                 <button type="button" ng-disabled="start" ng-click="startTimer()" class="btn btn-success ">Record</button>
-                <button type="button" ng-click="save()" class="btn btn-danger ">Save</button>
+                <button type="button" ng-disabled="!start" ng-click="save()" class="btn btn-danger ">Save</button>
                 <button type="button" ng-disabled="!start"  ng-click="stopTimer()" class="btn btn-default ">Reset</button>
             </div>
             <hr>

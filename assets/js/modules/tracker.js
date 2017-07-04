@@ -26,14 +26,12 @@
             $scope.start = Date.now();
 
         };
-
-        $scope.resumeTimer = function () {
-
-        };
         $scope.stopTimer = function () {
             $scope.start = false;
         };
         $scope.save = function () {
+          
+            $scope.start = false;
 
         };
 
