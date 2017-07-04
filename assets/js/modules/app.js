@@ -56,7 +56,7 @@
         }
         $scope.new = function (parent, data) {
             if (data != null) {
-                $scope.lists[parent].tasks.push({ name: "" + data + "", time: '' });
+                $scope.lists[parent].tasks.push({ name: "" + data + "", time: 0 });
                 $scope.update($scope.lists)
             }
         }
@@ -100,7 +100,7 @@
                                 {
                                     "name": "Task 1",
                                     "text": "Task 1 Text",
-                                    "time": "00"
+                                    "time": 0
                                 }
 
 

@@ -35,20 +35,16 @@
             $scope.start = false;
         };
         $scope.save = function () {
-            var timeElapsed = $scope.start;
-            alert(timeElapsed.getMinutes())
+            $scope.projects[$scope.board].boards[1].tasks[$scope.task].time = parseInt($scope.projects[$scope.board].boards[1].tasks[$scope.task].time) + parseInt($scope.start);
+  
+            console.log("task time", $scope.projects[$scope.board].boards[1].tasks[$scope.task].time )
+            
             $scope.start = false;
 
         };
 
-        $scope.projectSelected = function () {
-            console.log($scope.projects[$scope.board].boards[1].tasks)
-
-            console.log('tasks', $scope.tasks)
-        };
-
         $scope.$watch('board', function (newVal) {
-           // alert($scope.projects[$scope.board].boards[1].tasks)
+            // alert($scope.projects[$scope.board].boards[1].tasks)
             $scope.tasks = $scope.projects[$scope.board].boards[1].tasks;
         })
 

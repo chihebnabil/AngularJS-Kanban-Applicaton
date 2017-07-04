@@ -14,13 +14,12 @@
 
             </div>
             <div class="form-group">
-                <select class="form-control">
+                <select class="form-control" ng-model="task"> 
                      <option ng-repeat="t in tasks track by $index" value="{{$index}}">{{t.name}}</option>
                 </select>
 
 
             </div>
-            {{board}} -{{tasks}}
             <div class="btn-group" role="group">
                 <button type="button" ng-disabled="task == null || start" ng-click="startTimer()" class="btn btn-success ">Record</button>
                 <button type="button" ng-disabled="!start" ng-click="save()" class="btn btn-danger ">Save</button>
