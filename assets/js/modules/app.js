@@ -23,16 +23,15 @@
         var firebaseUser = $scope.authObj.$getAuth();
 
 
-        var projects = JSON.parse(localStorage.getItem("projects"))
-        Storage.get('projects').then(function (projects) {
-            $scope.projects = JSON.parse(projects)
-            console.log($scope.projects)
-
+        var projects = []
+        Storage.get('projects').then(function (p) {
+            projects = JSON.parse(p)
+            $rootScope.label = projects[id].label
+            $scope.lists = projects[id].boards
         });
 
 
-        $rootScope.label = projects[id].label
-        $scope.lists = projects[id].boards
+
 
 
 
@@ -66,7 +65,7 @@
         }
         $scope.update = function (data) {
             projects[id].boards = data
-            localStorage.setItem('projects', JSON.stringify(projects))
+
             Storage.set('projects', JSON.stringify(projects))
         }
 
@@ -134,12 +133,23 @@
             Storage.set('projects', JSON.stringify($rootScope.projects))
         }
         $scope.update = function (data) {
-            localStorage.setItem('projects', JSON.stringify(data))
+
             Storage.set('projects', JSON.stringify(data))
         }
 
     });
 
-
-
+    app.filter('time', function () {
+        return function (time) {
+            time = parseInt(time, 10);
+            var h = Math.floor(time / 3600);
+            var m = Math.floor((time % 3600) / 60);
+            return h + "h" + (m >= 10 ? m : '0' + m);
+        }
+    });
+    app.filter('to_min', function () {
+        return function (time) {
+            return Math.round(time / 60);
+        }
+    })
 }());

@@ -9,7 +9,7 @@
                             ng-repeat="el in list.tasks track by $index">
                                     <button type="button" ng-click="remove($parent.$index,$index)" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
 
-                            {{$index}} - {{el.name}}
+                           {{el.name}} <p>Time : {{el.time | to_min}}</p>
                         </div>
 
                         <form class="form-inline" ng-submit="new($index,newElement)">

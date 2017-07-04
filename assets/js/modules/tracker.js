@@ -36,9 +36,9 @@
         };
         $scope.save = function () {
             $scope.projects[$scope.board].boards[1].tasks[$scope.task].time = parseInt($scope.projects[$scope.board].boards[1].tasks[$scope.task].time) + parseInt($scope.start);
-  
-            console.log("task time", $scope.projects[$scope.board].boards[1].tasks[$scope.task].time )
-            
+
+            console.log("task time", $scope.projects[$scope.board].boards[1].tasks[$scope.task].time)
+            Storage.set('projects', JSON.stringify($scope.projects))
             $scope.start = false;
 
         };
