@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://github.com/chihebnabil/AngularJS-Kanban-Applicaton/blob/chromeex/assets/img/icon128.png?raw=true" alt="Taskii icon"/>
+</p>
+
 Taskii Chrome Extension
 ==
 Offline Project & Tasks Manager Application Built with `AngularJS`  ,`ngDraggble` and `AngularFire`
