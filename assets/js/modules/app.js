@@ -79,11 +79,12 @@
         $scope.authObj = $firebaseAuth();
         var firebaseUser = $scope.authObj.$getAuth();
 
-        if (JSON.parse(localStorage.getItem("projects")) == null) {
-            $rootScope.projects = []
-        } else {
-            $rootScope.projects = JSON.parse(localStorage.getItem("projects"))
-        }
+           var projects = []
+        Storage.get('projects').then(function (p) {
+            $rootScope.projects = JSON.parse(p)
+            $rootScope.label = projects[id].label
+            $scope.lists = projects[id].boards
+        });
 
 
 

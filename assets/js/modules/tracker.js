@@ -35,9 +35,14 @@
             $scope.start = false;
         };
         $scope.save = function () {
-            $scope.projects[$scope.board].boards[1].tasks[$scope.task].time = parseInt($scope.projects[$scope.board].boards[1].tasks[$scope.task].time) + parseInt($scope.start);
+            var now = Date.now();
+            var s = Math.floor((Date.now() - $scope.start) / 1000);
+            $scope.projects[$scope.board].boards[1].tasks[$scope.task].time += s;
 
-            console.log("task time", $scope.projects[$scope.board].boards[1].tasks[$scope.task].time)
+            console.log("task time", parseInt($scope.projects[$scope.board].boards[1].tasks[$scope.task].time))
+            console.log("now", now)
+            console.log("diff", $scope.projects[$scope.board].boards[1].tasks[$scope.task].time - now)
+
             Storage.set('projects', JSON.stringify($scope.projects))
             $scope.start = false;
 
