@@ -22,7 +22,7 @@ hr {
 form {
     padding: 0 10px;
 }
-input {
+input,select {
     display: block;
     margin: 10px 0;
     padding: 0 15px;

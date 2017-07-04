@@ -12,8 +12,8 @@
         messagingSenderId: "9187514965"
     };
     firebase.initializeApp(config);
-   
-    
+
+
     /** @ngInject */
     app.controller('MainCtrl', function ($scope, $rootScope, $routeParams, $firebaseObject, $firebaseAuth, $location, Storage) {
 
@@ -24,6 +24,13 @@
 
 
         var projects = JSON.parse(localStorage.getItem("projects"))
+        Storage.get('projects').then(function (projects) {
+            $scope.projects = JSON.parse(projects)
+            console.log($scope.projects)
+
+        });
+
+
         $rootScope.label = projects[id].label
         $scope.lists = projects[id].boards
 
@@ -49,7 +56,7 @@
         }
         $scope.new = function (parent, data) {
             if (data != null) {
-                $scope.lists[parent].tasks.push({ name: "" + data + "" });
+                $scope.lists[parent].tasks.push({ name: "" + data + "", time: '' });
                 $scope.update($scope.lists)
             }
         }

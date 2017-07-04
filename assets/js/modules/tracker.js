@@ -6,17 +6,22 @@
      */
     /** @ngInject */
     TRACKER.controller('TimeCtrl', function TimeCtrl($scope, $rootScope, $firebaseAuth, $location, Storage) {
-        var vm = this;
+
         $rootScope.navbar = false
+        // $scope.tasks = null;
 
         // Change icon when timer is started
         $scope.$watch('start', function (start) {
             Storage.set('start', start);
             if (chrome.browserAction) {
-                //  chrome.browserAction.setIcon({ path: "icon" + (start ? "-on" : "") + ".png" });
+
             }
         });
+        Storage.get('projects').then(function (projects) {
+            $scope.projects = JSON.parse(projects)
+            console.log($scope.projects)
 
+        });
         Storage.get('start').then(function (start) {
             $scope.loaded = true;
             $scope.start = start;
@@ -30,11 +35,22 @@
             $scope.start = false;
         };
         $scope.save = function () {
-          
+            var timeElapsed = $scope.start;
+            alert(timeElapsed.getMinutes())
             $scope.start = false;
 
         };
 
+        $scope.projectSelected = function () {
+            console.log($scope.projects[$scope.board].boards[1].tasks)
+
+            console.log('tasks', $scope.tasks)
+        };
+
+        $scope.$watch('board', function (newVal) {
+           // alert($scope.projects[$scope.board].boards[1].tasks)
+            $scope.tasks = $scope.projects[$scope.board].boards[1].tasks;
+        })
 
 
         // Link to dashboard
