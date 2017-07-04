@@ -82,17 +82,18 @@
            var projects = []
         Storage.get('projects').then(function (p) {
             $rootScope.projects = JSON.parse(p)
-            $rootScope.label = projects[id].label
-            $scope.lists = projects[id].boards
+          
         });
 
 
 
 
-        $scope.newProject = function () {
-            if ($scope.projectName != "") {
+        $scope.newProject = function (isValid) {
+   
+            if (isValid) {
                 $rootScope.projects.push({
                     label: $scope.projectName,
+                    rate  : $scope.rate,
                     boards: [
                         {
                             "label": "Todo",
@@ -124,6 +125,8 @@
                     ]
                 })
                 $scope.update($rootScope.projects)
+                $scope.projectName == ""
+                $scope.rate  = ""
             }
 
 
@@ -148,9 +151,5 @@
             return h + "h" + (m >= 10 ? m : '0' + m);
         }
     });
-    app.filter('to_min', function () {
-        return function (time) {
-            return Math.round(time / 60);
-        }
-    })
+  
 }());

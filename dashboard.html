@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
-<body >
+<body>
 
     <nav class="navbar ">
         <div class="container">
@@ -39,12 +39,15 @@
                 <a href="index.html#!/project/{{$index}}">{{p.label}}</a>
             </div>
             <hr>
-            <form>
+            <form name="newProjectForm" ng-submit="newProject(newProjectForm.$valid)" novalidate>
                 <div class="form-group">
-                    <input type="text" class="form-control" ng-model="projectName" placeholder="Project Name">
+                    <input type="text" class="form-control" ng-model="projectName" required placeholder="Project Name">
 
                 </div>
-                <button ng-click="newProject()" class="btn btn-info btn-block">Create</button>
+                <div class="form-group">
+                    <input type="number" min="0" class="form-control" ng-model="rate" required placeholder="How Much Is an Hour Worth to You?">
+                </div>
+                <button ng-disabled="userForm.$invalid" type="submit" class="btn btn-success btn-block">Create</button>
             </form>
 
         </div>
