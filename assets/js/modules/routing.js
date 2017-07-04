@@ -1,13 +1,15 @@
 (function () {
-   'use strict';
+    'use strict';
     /**
      * Routing
      */
-   
-  
-  ROUTING.config(ConfigRoutes);
+
+
+    ROUTING.config(ConfigRoutes);
     /** @ngInject */
-   function ConfigRoutes($routeProvider) {
+    function ConfigRoutes($routeProvider, $compileProvider) {
+        $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-extension):/);
+
         $routeProvider
             .when("/", {
                 templateUrl: "templates/record.html"
@@ -28,5 +30,5 @@
                 templateUrl: "templates/login.html"
             });
     }
-    
+
 }());
