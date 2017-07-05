@@ -24,21 +24,35 @@
 
 
         var projects = []
+        $scope.rate = 0;
         Storage.get('projects').then(function (p) {
             projects = JSON.parse(p)
-            $rootScope.label = projects[id].label
+            $rootScope.projects = JSON.parse(p)
+            $scope.rate = projects[id].rate
+            $scope.label = projects[id].label
             $scope.lists = projects[id].boards
         });
 
 
+        $scope.updateRate = function (v) {
+            projects[id].rate = v
+            $scope.rate = v
+            console.log(projects)
+            Storage.set('projects', JSON.stringify(projects))
 
-
+        }
+        $scope.updateLabel = function (v) {
+            projects[id].label = v
+            $scope.label = v
+            Storage.set('projects', JSON.stringify(projects))
+        }
 
 
 
         $scope.onDragComplete = function (index, parent, data, evt) {
             if (data != null) {
-                console.log("drag success index, data:", index);
+
+                console.log("drag success event:", evt.event);
                 $scope.lists[parent].tasks.splice(index, 1);
             }
         }
@@ -79,21 +93,21 @@
         $scope.authObj = $firebaseAuth();
         var firebaseUser = $scope.authObj.$getAuth();
 
-           var projects = []
+        var projects = []
         Storage.get('projects').then(function (p) {
             $rootScope.projects = JSON.parse(p)
-          
+
         });
 
 
 
 
         $scope.newProject = function (isValid) {
-   
+
             if (isValid) {
                 $rootScope.projects.push({
                     label: $scope.projectName,
-                    rate  : $scope.rate,
+                    rate: $scope.rate,
                     boards: [
                         {
                             "label": "Todo",
@@ -126,7 +140,7 @@
                 })
                 $scope.update($rootScope.projects)
                 $scope.projectName == ""
-                $scope.rate  = ""
+                $scope.rate = ""
             }
 
 
@@ -143,6 +157,7 @@
 
     });
 
+
     app.filter('time', function () {
         return function (time) {
             time = parseInt(time, 10);
@@ -151,5 +166,15 @@
             return h + "h" + (m >= 10 ? m : '0' + m);
         }
     });
-  
+    app.filter('to_min', function () {
+        return function (time) {
+            return Math.round(time / 60);
+        }
+    })
+    app.filter('round', function () {
+        return function (value) {
+            return Math.round(value);
+        }
+    });
+
 }());

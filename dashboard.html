@@ -19,8 +19,7 @@
             <div class="collapse navbar-collapse" id="navcol-1" ng-if="navbar">
                 <ul class="nav navbar-nav navbar-right">
 
-                    <li role="presentation"><a href="#!/time">Time Track</a></li>
-                    <li role="presentation"><a target="__blank" href="#!/">Tasks</a></li>
+                   
 
                 </ul>
             </div>
@@ -34,12 +33,13 @@
             <h2>Projects</h2>
             <small>Select Or Create New Project</small>
             <hr>
+          
             <div class="alert alert-info" ng-repeat="p in projects track by $index ">
                 <button type="button" ng-click="remove($index)" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span>x</button>
                 <a href="index.html#!/project/{{$index}}">{{p.label}}</a>
             </div>
             <hr>
-            <form name="newProjectForm" ng-submit="newProject(newProjectForm.$valid)" novalidate>
+  <form name="newProjectForm" ng-submit="newProject(newProjectForm.$valid)" novalidate>
                 <div class="form-group">
                     <input type="text" class="form-control" ng-model="projectName" required placeholder="Project Name">
 

@@ -17,6 +17,9 @@
             .when("/project/:id", {
                 templateUrl: "templates/project.html"
             })
+            .when("/invoice/:project/:id", {
+                templateUrl: "templates/invoice.html"
+            })
             .when("/login", {
                 templateUrl: "templates/login.html"
             })
