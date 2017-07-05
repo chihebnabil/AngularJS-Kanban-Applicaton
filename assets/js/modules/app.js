@@ -28,7 +28,7 @@
         Storage.get('projects').then(function (p) {
             projects = JSON.parse(p)
             $rootScope.projects = JSON.parse(p)
-             $scope.id = id
+            $scope.id = id
             $scope.rate = projects[id].rate
             $scope.label = projects[id].label
             $scope.lists = projects[id].boards
@@ -157,17 +157,26 @@
         }
 
     });
-    app.controller('InvCtrl', function ($scope, $rootScope,$routeParams, $firebaseAuth, $location, Storage) {
+    app.controller('InvCtrl', function ($scope, $rootScope, $routeParams, $firebaseAuth, $location, Storage) {
         Storage.get('projects').then(function (p) {
-           
+
             $rootScope.projects = JSON.parse(p)
             $scope.id = $routeParams.project
-            $scope.rate = $rootScope.projects[$scope.id ].rate
-            $scope.label = $rootScope.projects[$scope.id ].label
-            $scope.items = $rootScope.projects[$scope.id ].boards[2].tasks
-            console.log( $scope.items)
+            $scope.rate = $rootScope.projects[$scope.id].rate
+            $scope.label = $rootScope.projects[$scope.id].label
+            $scope.items = $rootScope.projects[$scope.id].boards[2].tasks
+            
         });
+        
 
+       $scope.getTotal = function(int) {
+    var total = 0;
+    angular.forEach($scope.items, function(el) {
+        console.log(el.time / 3600)
+        total += el[int];
+    });
+    return total;
+};
     })
 
     app.filter('time', function () {
