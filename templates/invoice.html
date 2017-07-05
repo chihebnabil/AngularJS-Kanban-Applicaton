@@ -3,14 +3,14 @@ body{
     background: white
 }
 </style>
-<div class="container" id="invoice">
+<div class="container" id="invoice" >
     <div class="row">
         <div class="col-xs-6">
          
         </div>
         <div class="col-xs-6 text-right">
             <h1>INVOICE</h1>
-            <h1><small>Invoice #{{invoice.number}}</small></h1>
+            <h1><small>Invoice #{{id}}</small></h1>
         </div>
     </div>
     <div class="row">
@@ -46,9 +46,7 @@ body{
         <thead>
             <tr>
                 <th></th>
-                <th>
-                    <h4>Service</h4>
-                </th>
+               
                 <th>
                     <h4>Description</h4>
                 </th>
@@ -64,22 +62,22 @@ body{
             </tr>
         </thead>
         <tbody>
-            <tr v-for="p in invoice.products">
+            <tr ng-repeat="item in items">
                 <td><button class="btn btn-danger">-</button></td>
-                <td>{{p.title}}</td>
-                <td>{{p.description}}</td>
-                <td class="text-right">{{p.qty}}</td>
-                <td class="text-right">${{p.price}}</td>
-                <td class="text-right">${{p.qty * p.price}}</td>
+                
+                <td>{{item.name }}</td>
+                <td class="text-right">{{item.time / 3600 | number:2}}</td>
+                <td class="text-right">{{rate}}</td>
+                <td class="text-right">{{ rate * item.time / 3600 | round }}</td>
             </tr>
             <tr>
-                <td><button v-on:click="add" class="btn btn-primary">+</button></td>
-                <td><input class="form-control" type="text" v-model="title"></td>
-                <td><input class="form-control" v-model="description"></td>
-                <td class="text-right"><input class="form-control" v-model="qty"></td>
-                <td class="text-right"><input class="form-control" v-model="price"></td>
+                <td><button ng-click="add" class="btn btn-primary">+</button></td>
+             
+                <td><input class="form-control" ng-model="item.name"></td>
+                <td class="text-right"><input class="form-control" type="number" ng-model="item.qty"></td>
+                <td class="text-right"><input class="form-control" ng-model="item.rate"></td>
 
-                <td class="text-right">{{qty * price}}</td>
+                <td class="text-right">{{qty * rate}}</td>
 
             </tr>
 
