@@ -7,13 +7,14 @@
         <hr>
         <form>
             <div class="form-group">
-
+<label for="board">Select a project</label>
                 <select class="form-control" name="board" ng-model="board" placeholder="Select a board" >
                     <option ng-repeat="p in projects track by $index " value="{{$index}}">{{p.label}}</option>
                 </select>
 
             </div>
             <div class="form-group">
+                <label for="task">What task are you working(Doing) on today?</label>
                 <select class="form-control" ng-model="task"> 
                      <option ng-repeat="t in tasks track by $index" value="{{$index}}">{{t.name}}</option>
                 </select>
@@ -26,7 +27,7 @@
                 <button type="button" ng-disabled="!start" ng-click="stopTimer()" class="btn btn-default ">Reset</button>
             </div>
             <hr>
-            <a href="" ng-click="dashboard()">Dashboard</a>
+            <a href="" ng-click="dashboard()">Dashboard</a> | <a  href="#!/settings">Settings</a>
         </form>
     </div>
 </div>

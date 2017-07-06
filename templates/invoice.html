@@ -1,16 +1,20 @@
-<style> 
-body{
-    background: white
-}
+<style>
+    body {
+        background: white
+    }
+
+    input {
+        border: none;
+    }
 </style>
-<div class="container" id="invoice" >
+<div class="container" id="invoice">
     <div class="row">
         <div class="col-xs-6">
-         
+
         </div>
         <div class="col-xs-6 text-right">
             <h1>INVOICE</h1>
-            <h1><small>Invoice #{{id}}</small></h1>
+            <h1><small>Invoice #<input type="text" style="text-align:right;max-width:50px;" ng-model="invoice.number"></small></h1>
         </div>
     </div>
     <div class="row">
@@ -24,18 +28,25 @@ body{
                         {{invoice.from.address}} <br> {{invoice.from.details}} <br>
 
                     </p>
+                    <p>
+                        {{settings.email}}
+                    </p>
                 </div>
             </div>
         </div>
         <div class="col-xs-5 col-xs-offset-2 text-right">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4>To : {{invoice.to.name}}</h4>
+                    <h4>To : <input type="text" style="text-align:right;" ng-model="invoice.to.name"></h4>
                 </div>
                 <div class="panel-body">
                     <p>
-                        {{invoice.to.address}} <br> {{invoice.to.details}} <br>
+                        <input type="text" style="text-align:right;" ng-model="invoice.to.address"> <br> <input type="text"
+                            style="text-align:right;" ng-model="invoice.to.details"> <br>
 
+                    </p>
+                    <p>
+                          <input type="text" style="text-align:right;" ng-model="invoice.to.email"> 
                     </p>
                 </div>
             </div>
@@ -46,7 +57,7 @@ body{
         <thead>
             <tr>
                 <th></th>
-               
+
                 <th>
                     <h4>Description</h4>
                 </th>
@@ -62,17 +73,17 @@ body{
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="item in items">
+            <tr ng-repeat="item in invoice.products">
                 <td><button class="btn btn-danger">-</button></td>
-                
-                <td>{{item.name }}</td>
-                <td class="text-right">{{item.time / 3600 | number:2}}</td>
-                <td class="text-right">{{rate}}</td>
+
+                <td><input type="text" ng-model="item.name"></td>
+                <td class="text-right"><input type="text" style="text-align:right;" ng-model="item.time / 3600 | number:2"></td>
+                <td class="text-right"><input type="text" style="text-align:right;" ng-model="rate"></td>
                 <td class="text-right">{{ rate * item.time / 3600 | round }}</td>
             </tr>
             <tr>
                 <td><button ng-click="add" class="btn btn-primary">+</button></td>
-             
+
                 <td><input class="form-control" ng-model="item.name"></td>
                 <td class="text-right"><input class="form-control" type="number" ng-model="item.qty"></td>
                 <td class="text-right"><input class="form-control" ng-model="item.rate"></td>
@@ -87,7 +98,7 @@ body{
         <div class="col-xs-2 col-xs-offset-8">
             <p>
                 <strong>
-            Sub Total : {{ getTotal('time')  }}<br>
+            Sub Total : {{ getTotal('unit_price.value')  }}<br>
             TAX : <br>
             Total : <br>
             </strong>

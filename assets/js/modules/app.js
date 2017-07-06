@@ -158,6 +158,35 @@
 
     });
     app.controller('InvCtrl', function ($scope, $rootScope, $routeParams, $firebaseAuth, $location, Storage) {
+        Storage.get('settings').then(function (s) {
+            $scope.settings = JSON.parse(s)
+            $scope.invoice = {
+                number: 123,
+                paid_at: null,
+                currency: "DZD",
+                paid: false,
+                data: new Date(),
+                taxRate: 0.19,
+                from:
+                { name: $scope.settings.full_name, address: $scope.settings.address, details: $scope.settings.details }
+                ,
+                to:
+                { name: "Martin A. Selby", address: "450 Cinnamon Lane", details: "San Antonio, TX 78202" }
+                ,
+                products: [
+                    {
+                        name: "test", quantity: 2, 
+                        unit_price: {
+                            currency: $scope.settings.currency,
+                            value: "5"
+                        }
+                    }
+                ]
+            }
+        })
+
+
+
         Storage.get('projects').then(function (p) {
 
             $rootScope.projects = JSON.parse(p)
@@ -165,20 +194,38 @@
             $scope.rate = $rootScope.projects[$scope.id].rate
             $scope.label = $rootScope.projects[$scope.id].label
             $scope.items = $rootScope.projects[$scope.id].boards[2].tasks
-            
+
         });
-        
 
-       $scope.getTotal = function(int) {
-    var total = 0;
-    angular.forEach($scope.items, function(el) {
-        console.log(el.time / 3600)
-        total += el[int];
-    });
-    return total;
-};
+
+        $scope.getTotal = function (int) {
+            var total = 0;
+            angular.forEach($scope.invoice.products, function (el) {
+                console.log(el.time / 3600)
+                total += el[int];
+            });
+            return total;
+        };
     })
+    app.controller('SettingsCtrl', function ($scope, $rootScope, $firebaseAuth, $window, Storage) {
 
+        Storage.get('settings').then(function (s) {
+            $scope.settings = JSON.parse(s)
+        })
+        $scope.save = function () {
+
+            Storage.set('settings', JSON.stringify($scope.settings))
+            $window.history.back();
+        }
+        // Link to dashboard
+        $scope.dashboard = function () {
+            if (chrome.tabs) {
+                chrome.tabs.create({ url: chrome.extension.getURL('dashboard.html') });
+            } else {
+                window.location = "dashboard.html";
+            }
+        };
+    })
     app.filter('time', function () {
         return function (time) {
             time = parseInt(time, 10);

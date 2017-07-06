@@ -2,7 +2,7 @@
     'use strict';
 
     /**
-     *  Taskii Storage Module
+     *  Taskii Storage Service
      */
     app.factory('Storage', function ($q) {
 

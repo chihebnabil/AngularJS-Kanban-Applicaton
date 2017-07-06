@@ -30,6 +30,9 @@
             .when("/record", {
                 templateUrl: "templates/record.html"
             })
+            .when("/settings", {
+                templateUrl: "templates/settings.html"
+            })
             .otherwise({
                 templateUrl: "templates/login.html"
             });
