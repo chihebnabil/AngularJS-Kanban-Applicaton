@@ -46,7 +46,7 @@
 
                     </p>
                     <p>
-                          <input type="text" style="text-align:right;" ng-model="invoice.to.email"> 
+                        <input type="text" style="text-align:right;" ng-model="invoice.to.email">
                     </p>
                 </div>
             </div>
@@ -73,8 +73,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="item in invoice.products">
-                <td><button class="btn btn-danger">-</button></td>
+            <tr ng-repeat="item in items track by $index">
+                <td><button ng-click="remove($index)" class="btn btn-danger">-</button></td>
 
                 <td><input type="text" ng-model="item.name"></td>
                 <td class="text-right"><input type="text" style="text-align:right;" ng-model="item.time / 3600 | number:2"></td>
@@ -82,13 +82,13 @@
                 <td class="text-right">{{ rate * item.time / 3600 | round }}</td>
             </tr>
             <tr>
-                <td><button ng-click="add" class="btn btn-primary">+</button></td>
+                <td><button ng-click="add()" class="btn btn-primary">+</button></td>
 
                 <td><input class="form-control" ng-model="item.name"></td>
                 <td class="text-right"><input class="form-control" type="number" ng-model="item.qty"></td>
                 <td class="text-right"><input class="form-control" ng-model="item.rate"></td>
 
-                <td class="text-right">{{qty * rate}}</td>
+                <td class="text-right">{{item.qty * item.rate}}</td>
 
             </tr>
 
@@ -98,10 +98,10 @@
         <div class="col-xs-2 col-xs-offset-8">
             <p>
                 <strong>
-            Sub Total : {{ getTotal('unit_price.value')  }}<br>
-            TAX : <br>
-            Total : <br>
-            </strong>
+            Sub Total :  </strong>{{ getTotal() }}<br>
+                <strong>TAX       </strong> : <br>
+                <strong>Total :        </strong>{{ getTotal() }} <br>
+                </strong>
             </p>
         </div>
         <div class="col-xs-2">

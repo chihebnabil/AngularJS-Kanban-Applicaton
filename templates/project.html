@@ -11,7 +11,7 @@
                 <ul class="nav navbar-nav navbar-right">
 
                     <li><a href=""><input type="text" class="projectLabel"  ng-value="label" ng-blur="updateLabel($event.target.value)"></a></li>
-                    <li><a href=""><input type="number" min="0" class="projectRate" ng-value="rate" ng-blur="updateRate($event.target.value)"> /h</a></li>
+                    <li><a href=""><input type="number" min="0" class="projectRate" ng-value="rate" ng-blur="updateRate($event.target.value)">{{settings.currency}}/Hour</a></li>
                 </ul>
             </div>
         </div>
@@ -28,7 +28,7 @@
 
                         <button type="button" ng-click="remove($parent.$index,$index)" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>                        {{el.name}}
                         <p></p>
-                        <p><small> Time : {{el.time | time}}</small> - <small> Price : {{ rate * el.time / 3600 | round }}</small></p>
+                        <p><small> Time : {{el.time | time}}</small> - <small> Price : {{ rate * el.time / 3600 | round }} {{settings.currency}} </small></p>
                     </div>
 
                     <form class="form-inline" ng-submit="new($index,newElement)">

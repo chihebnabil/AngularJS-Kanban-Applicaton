@@ -33,6 +33,9 @@
             $scope.label = projects[id].label
             $scope.lists = projects[id].boards
         });
+         Storage.get('settings').then(function (s) {
+            $scope.settings = JSON.parse(s)
+        })
 
 
         $scope.updateRate = function (v) {
@@ -171,7 +174,7 @@
                 { name: $scope.settings.full_name, address: $scope.settings.address, details: $scope.settings.details }
                 ,
                 to:
-                { name: "Martin A. Selby", address: "450 Cinnamon Lane", details: "San Antonio, TX 78202" }
+                { name: "Martin A. Selby", address: "450 Cinnamon Lane", details: "San Antonio, TX 78202" ,email :"exemple@exemple.com"}
                 ,
                 products: [
                     {
@@ -198,14 +201,18 @@
         });
 
 
-        $scope.getTotal = function (int) {
+        $scope.getTotal = function () {
             var total = 0;
-            angular.forEach($scope.invoice.products, function (el) {
-                console.log(el.time / 3600)
-                total += el[int];
-            });
+          
             return total;
         };
+
+        $scope.add =function(){
+            $scope.invoice.products.push({ name : $scope.item.name , quantity: $scope.item.qty })
+        }
+         $scope.remove =function(index){
+            $scope.invoice.products.splice(index, 1)
+        }
     })
     app.controller('SettingsCtrl', function ($scope, $rootScope, $firebaseAuth, $window, Storage) {
 
