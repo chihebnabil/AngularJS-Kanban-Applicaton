@@ -119,3 +119,10 @@ a.float:hover + div.label-container{
   visibility: visible;
   opacity: 1;
 }
+
+
+@media print{
+   .noprint{
+       display:none;
+   }
+}

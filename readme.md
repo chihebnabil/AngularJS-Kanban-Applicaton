@@ -4,15 +4,17 @@
 
 Taskii Chrome Extension
 ==
-Offline Project & Tasks Manager allow freelancers to :
+Offline time tracking helps freelancers to :
 
+- Manage their projects
 - Track their time 
-- Organize tasks in a kanban board 
-- Create invoices .
+- Organize tasks in a drag & drop kanban board 
+- Create & print invoices .
 
-Built with `AngularJS`  ,`ngDraggble` 
+Taskii uses the browser's `localStorage` & `chrome sync storage`  to save data
 
-It uses the browser's `localStorage` & `chrome sync storage`  to save data
+Built with `AngularJS` 
+
 
 
 Demo
