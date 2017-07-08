@@ -1,28 +1,12 @@
 (function () {
     'use strict';
-    /**
-     * Firebase Config
-     */
-    var config = {
-        apiKey: "AIzaSyAAghCvO6oB9Pnv1zmQUu7HZMEiKtXdSMQ",
-        authDomain: "todos-87616.firebaseapp.com",
-        databaseURL: "https://todos-87616.firebaseio.com",
-        projectId: "todos-87616",
-        storageBucket: "",
-        messagingSenderId: "9187514965"
-    };
-    firebase.initializeApp(config);
 
 
     /** @ngInject */
-    app.controller('MainCtrl', function ($scope, $rootScope, $routeParams, $firebaseObject, $firebaseAuth, $location, Storage) {
+    app.controller('MainCtrl', function ($scope, $rootScope, $routeParams, $location, Storage) {
 
         $rootScope.navbar = true
         var id = $routeParams.id
-        $scope.authObj = $firebaseAuth();
-        var firebaseUser = $scope.authObj.$getAuth();
-
-
         var projects = []
         $scope.rate = 0;
         Storage.get('projects').then(function (p) {
@@ -91,11 +75,10 @@
 
 
     /** @ngInject */
-    app.controller('HomeCtrl', function ($scope, $rootScope, $firebaseObject, $firebaseAuth, $location, $firebaseArray, Storage) {
+    app.controller('HomeCtrl', function ($scope, $rootScope, $location, Storage) {
 
         $rootScope.navbar = false
-        $scope.authObj = $firebaseAuth();
-        var firebaseUser = $scope.authObj.$getAuth();
+
 
         var projects = []
         Storage.get('projects').then(function (p) {
@@ -161,7 +144,7 @@
         }
 
     });
-    app.controller('InvCtrl', function ($scope, $filter, $rootScope, $routeParams, $firebaseAuth, $location, Storage) {
+    app.controller('InvCtrl', function ($scope, $filter, $rootScope, $routeParams, $location, Storage) {
         Storage.get('settings').then(function (s) {
             $scope.settings = JSON.parse(s)
             $scope.invoice = {
@@ -216,22 +199,22 @@
             var total = 0;
 
             for (var i = 0; i < $scope.items.length; i++) {
-                 var element = $scope.items[i];
+                var element = $scope.items[i];
                 console.log('total items', element)
-                total +=  (element.price * element.qty)
+                total += (element.price * element.qty)
             }
             return total;
         };
 
         $scope.add = function () {
-            $scope.items.push({ name: $scope.item.name, time: 0, qty : $scope.q, price: $scope.q * $scope.r })
+            $scope.items.push({ name: $scope.item.name, time: 0, qty: $scope.q, price: $scope.q * $scope.r })
             console.log($scope.items)
         }
         $scope.remove = function (index) {
             $scope.items.splice(index, 1)
         }
     })
-    app.controller('SettingsCtrl', function ($scope, $rootScope, $firebaseAuth, $window, Storage) {
+    app.controller('SettingsCtrl', function ($scope, $rootScope, $window, Storage) {
 
         Storage.get('settings').then(function (s) {
             $scope.settings = JSON.parse(s)

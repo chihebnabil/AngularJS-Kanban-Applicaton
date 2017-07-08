@@ -5,7 +5,7 @@
      *  Firebase Time Tracker Module
      */
     /** @ngInject */
-    TRACKER.controller('TimeCtrl', function TimeCtrl($scope, $rootScope, $firebaseAuth, $location, Storage) {
+    TRACKER.controller('TimeCtrl', function TimeCtrl($scope, $rootScope,  $location, Storage) {
 
         $rootScope.navbar = false
         // $scope.tasks = null;
