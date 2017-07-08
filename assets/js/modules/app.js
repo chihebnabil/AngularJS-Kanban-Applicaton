@@ -33,7 +33,7 @@
             $scope.label = projects[id].label
             $scope.lists = projects[id].boards
         });
-         Storage.get('settings').then(function (s) {
+        Storage.get('settings').then(function (s) {
             $scope.settings = JSON.parse(s)
         })
 
@@ -73,7 +73,7 @@
         }
         $scope.new = function (parent, data) {
             if (data != null) {
-                $scope.lists[parent].tasks.push({ name: "" + data + "", time: 0 });
+                $scope.lists[parent].tasks.push({ name: "" + data + "", time: 0, qty: 1 });
                 $scope.update($scope.lists)
             }
         }
@@ -119,6 +119,7 @@
                                 {
                                     "name": "Task 1",
                                     "text": "Task 1 Text",
+                                    "qty": 1,
                                     "time": 0
                                 }
 
@@ -160,7 +161,7 @@
         }
 
     });
-    app.controller('InvCtrl', function ($scope, $rootScope, $routeParams, $firebaseAuth, $location, Storage) {
+    app.controller('InvCtrl', function ($scope,$filter, $rootScope, $routeParams, $firebaseAuth, $location, Storage) {
         Storage.get('settings').then(function (s) {
             $scope.settings = JSON.parse(s)
             $scope.invoice = {
@@ -174,11 +175,11 @@
                 { name: $scope.settings.full_name, address: $scope.settings.address, details: $scope.settings.details }
                 ,
                 to:
-                { name: "Martin A. Selby", address: "450 Cinnamon Lane", details: "San Antonio, TX 78202" ,email :"exemple@exemple.com"}
+                { name: "Martin A. Selby", address: "450 Cinnamon Lane", details: "San Antonio, TX 78202", email: "exemple@exemple.com" }
                 ,
                 products: [
                     {
-                        name: "test", quantity: 2, 
+                        name: "test", quantity: 2,
                         unit_price: {
                             currency: $scope.settings.currency,
                             value: "5"
@@ -189,29 +190,36 @@
         })
 
 
-
+        $scope.qty = 1;
         Storage.get('projects').then(function (p) {
 
             $rootScope.projects = JSON.parse(p)
             $scope.id = $routeParams.project
             $scope.rate = $rootScope.projects[$scope.id].rate
+
             $scope.label = $rootScope.projects[$scope.id].label
             $scope.items = $rootScope.projects[$scope.id].boards[2].tasks
+            for (var i = 0; i < $scope.items.length; i++) {
+                var element = $scope.items[i];
+                $scope.items[i].price = $filter('round')($scope.items[i].time / 3600 * $scope.rate)
+            }
 
         });
 
 
+
         $scope.getTotal = function () {
             var total = 0;
-          
+
             return total;
         };
 
-        $scope.add =function(){
-            $scope.invoice.products.push({ name : $scope.item.name , quantity: $scope.item.qty })
+        $scope.add = function () {
+            $scope.items.push({ name: $scope.item.name, time: 0, quantity: $scope.q, price: $scope.q * $scope.r })
+            console.log($scope.items)
         }
-         $scope.remove =function(index){
-            $scope.invoice.products.splice(index, 1)
+        $scope.remove = function (index) {
+            $scope.items.splice(index, 1)
         }
     })
     app.controller('SettingsCtrl', function ($scope, $rootScope, $firebaseAuth, $window, Storage) {
