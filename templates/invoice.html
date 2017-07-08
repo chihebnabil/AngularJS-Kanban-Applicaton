@@ -101,9 +101,9 @@
             <p>Total</p>
         </div>
         <div class="col-xs-2 text-right" ng-init="tax = 0">
-            <p>{{ getTotal() }}</p>
+            <p>{{ getTotal() }} <small>{{ settings.currency }}</small></p>
             <p><input  type="number" max="100" min="0" ng-model="tax"> %</p>
-            <p>{{ getTotal() + (getTotal() * tax /100) }}</p>
+            <p>{{ getTotal() + (getTotal() * tax /100) }} <small>{{ settings.currency }}</small></p>
 
         </div>
     </div>
