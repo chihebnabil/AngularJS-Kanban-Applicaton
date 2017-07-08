@@ -77,16 +77,16 @@
                 <td><button ng-click="remove($index)" class="btn btn-danger">-</button></td>
 
                 <td><input type="text" ng-value='item.name +"  "+ (item.time | time) '></td>
-                <td class="text-right"><input  type="number" min="1" style="text-align:right;"  ng-model="qty"></td>
-                <td class="text-right"><input type="number" style="text-align:right;"ng-model="item.price " > </td>
-                <td class="text-right">{{  item.price  * qty  | round }}</td>
+                <td class="text-right"><input type="number" min="1" style="text-align:right;" ng-model="item.qty"></td>
+                <td class="text-right"><input type="number" style="text-align:right;" ng-model="item.price "> </td>
+                <td class="text-right">{{ item.price * item.qty | round }}</td>
             </tr>
             <tr>
                 <td><button ng-click="add()" class="btn btn-primary">+</button></td>
 
                 <td><input class="form-control" ng-model="item.name"></td>
-                <td class="text-right"><input class="form-control" type="number" min="1"  ng-model="q"></td>
-                <td class="text-right"><input class="form-control" type="number" min="1" ng-model="r"></td>
+                <td class="text-right"><input class="form-control" type="number" min="1" ng-model="q"></td>
+                <td class=""><input class="form-control" type="number" min="1" ng-model="r"></td>
 
                 <td class="text-right">{{q * r || 0}}</td>
 
@@ -94,22 +94,17 @@
 
         </tbody>
     </table>
-    <div class="row text-right">
-        <div class="col-xs-2 col-xs-offset-8">
-            <p>
-                <strong>
-            Sub Total :  </strong>{{ getTotal() }}<br>
-                <strong>TAX       </strong> : <br>
-                <strong>Total :        </strong>{{ getTotal() }} <br>
-                </strong>
-            </p>
+    <div class="row">
+        <div class="col-xs-2 col-xs-offset-8 text-right">
+            <p>Sub Total</p>
+            <p>Tax</p>
+            <p>Total</p>
         </div>
-        <div class="col-xs-2">
-            <strong>
-          <br>
-            <br>
-          <br>
-          </strong>
+        <div class="col-xs-2 text-right" ng-init="tax = 0">
+            <p>{{ getTotal() }}</p>
+            <p><input  type="number" max="100" min="0" ng-model="tax"> %</p>
+            <p>{{ getTotal() + (getTotal() * tax /100) }}</p>
+
         </div>
     </div>
 

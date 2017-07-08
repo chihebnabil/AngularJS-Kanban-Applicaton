@@ -161,7 +161,7 @@
         }
 
     });
-    app.controller('InvCtrl', function ($scope,$filter, $rootScope, $routeParams, $firebaseAuth, $location, Storage) {
+    app.controller('InvCtrl', function ($scope, $filter, $rootScope, $routeParams, $firebaseAuth, $location, Storage) {
         Storage.get('settings').then(function (s) {
             $scope.settings = JSON.parse(s)
             $scope.invoice = {
@@ -191,6 +191,7 @@
 
 
         $scope.qty = 1;
+        $scope.items = []
         Storage.get('projects').then(function (p) {
 
             $rootScope.projects = JSON.parse(p)
@@ -198,11 +199,14 @@
             $scope.rate = $rootScope.projects[$scope.id].rate
 
             $scope.label = $rootScope.projects[$scope.id].label
+
             $scope.items = $rootScope.projects[$scope.id].boards[2].tasks
             for (var i = 0; i < $scope.items.length; i++) {
                 var element = $scope.items[i];
-                $scope.items[i].price = $filter('round')($scope.items[i].time / 3600 * $scope.rate)
+                element.price = $filter('round')(element.time / 3600 * $scope.rate)
+
             }
+
 
         });
 
@@ -211,11 +215,16 @@
         $scope.getTotal = function () {
             var total = 0;
 
+            for (var i = 0; i < $scope.items.length; i++) {
+                 var element = $scope.items[i];
+                console.log('total items', element)
+                total +=  (element.price * element.qty)
+            }
             return total;
         };
 
         $scope.add = function () {
-            $scope.items.push({ name: $scope.item.name, time: 0, quantity: $scope.q, price: $scope.q * $scope.r })
+            $scope.items.push({ name: $scope.item.name, time: 0, qty : $scope.q, price: $scope.q * $scope.r })
             console.log($scope.items)
         }
         $scope.remove = function (index) {
