@@ -21,9 +21,6 @@
                 templateUrl: "templates/invoice.html",
                 controller : "InvCtrl"
             })
-            .when("/login", {
-                templateUrl: "templates/login.html"
-            })
             .when("/register", {
                 templateUrl: "templates/register.html"
             })
@@ -34,7 +31,7 @@
                 templateUrl: "templates/settings.html"
             })
             .otherwise({
-                templateUrl: "templates/login.html"
+                templateUrl: "templates/settings.html"
             });
     }
 
