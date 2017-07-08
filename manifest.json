@@ -1,6 +1,6 @@
 {
     "name": "Taskii - Time Tracker",
-    "description": "Allow time tracking from the browser with syncing ability thanks to chrome sync storage",
+    "description": "Offline Project & Tasks Manager allow freelancers to :Track their time , Organize tasks in a kanban board,Create invoices",
     "version": "0.1",
     "browser_action": {
         "name": "Click to open the timer",

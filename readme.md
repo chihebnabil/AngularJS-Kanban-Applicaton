@@ -4,20 +4,25 @@
 
 Taskii Chrome Extension
 ==
-Offline Project & Tasks Manager Application Built with `AngularJS`  ,`ngDraggble` and `AngularFire`
+Offline Project & Tasks Manager allow freelancers to :
 
-It uses the browser's `localStorage` & `Firebase` Cloud Service to save data
+- Track their time 
+- Organize tasks in a kanban board 
+- Create invoices .
 
-To-do
-=======
-- Time Manager
+Built with `AngularJS`  ,`ngDraggble` 
+
+It uses the browser's `localStorage` & `chrome sync storage`  to save data
+
 
 Demo
 ====
 https://chihebnabil.github.io/AngularJS-Kanban-Applicaton/
 
+![record](screenshots/record.png)
 
+![create_project](screenshots/create_project.png)
 
-![project_manager](/project_manager.png)
+![task_manager](screenshots/task_manager.png)
 
-![task_manager](/task_manager.png)
+![create_invoice](screenshots/invoice.png)
