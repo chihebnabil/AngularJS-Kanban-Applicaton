@@ -21,10 +21,18 @@ Demo
 ====
 https://chihebnabil.github.io/AngularJS-Kanban-Applicaton/
 
+Time Tracker
+=====
 ![record](screenshots/record.png)
 
+Create project
+=====
 ![create_project](screenshots/create_project.png)
 
+Kanban board
+=====
 ![task_manager](screenshots/task_manager.png)
 
+Create & print invoice
+=====
 ![create_invoice](screenshots/invoice.png)
