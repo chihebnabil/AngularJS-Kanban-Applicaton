@@ -1,5 +1,5 @@
 {
-  "name": "firebase-kanban-app",
+  "name": "Taskii",
   "version": "1.0.0",
   "description": "Offline Project & Tasks Manager allow freelancers to :Track their time , Organize tasks in a kanban board,Create invoices",
   "main": "index.js",
