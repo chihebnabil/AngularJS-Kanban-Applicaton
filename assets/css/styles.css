@@ -121,6 +121,16 @@ a.float:hover + div.label-container{
 }
 
 
+.vcenter {
+     float:none;
+    display:inline-block;
+    vertical-align:middle;
+    margin-right:-4px;
+}
+.col-xs-2, .col-xs-6 {
+   display: inline-block;
+}
+
 @media print{
    .noprint{
        display:none;

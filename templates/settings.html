@@ -22,7 +22,7 @@
             <div class="form-group">
                 <input type="text" class="form-control" ng-model="settings.details" placeholder="Address details">
             </div>
-            <div class="form-group">
+            <div class="form-group" ng-init="settings.currency = USD">
                 <select type="text" class="form-control" ng-model="settings.currency" > 
                    <option value="USD">USD</option>
                    <option value="EUR">EUR</option>
@@ -32,7 +32,7 @@
 
             <button ng-click="save()" class="btn btn-success btn-block">Save</button>
             <hr>
-            <a ng-click="dashboard()" href="" class="btn btn-success btn-block">Dashboard</a>
+            <a ng-click="dashboard()" href="" class="btn btn-success btn-block">Dashboard</a> 
         </form>
 
     </div>

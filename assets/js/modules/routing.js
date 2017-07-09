@@ -19,16 +19,17 @@
             })
             .when("/invoice/:project", {
                 templateUrl: "templates/invoice.html",
-                controller : "InvCtrl"
-            })
-            .when("/register", {
-                templateUrl: "templates/register.html"
+                controller: "InvCtrl"
             })
             .when("/record", {
                 templateUrl: "templates/record.html"
             })
             .when("/settings", {
                 templateUrl: "templates/settings.html"
+            })
+            .when("/paypal-settings", {
+                controller: "SettingsCtrl",
+                templateUrl: "templates/paypal-settings.html"
             })
             .otherwise({
                 templateUrl: "templates/settings.html"

@@ -175,6 +175,16 @@
 
         $scope.qty = 1;
         $scope.items = []
+        $scope.getpaid = false;
+        $scope.showLink = function () {
+            if ($scope.getpaid) {
+                $scope.getpaid = false;
+            } else {
+                $scope.getpaid = true;
+            }
+
+        }
+
         Storage.get('projects').then(function (p) {
 
             $rootScope.projects = JSON.parse(p)

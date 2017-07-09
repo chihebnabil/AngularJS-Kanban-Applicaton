@@ -8,6 +8,19 @@
     }
 </style>
 <div class="container" id="invoice">
+    <div class="row noprint">
+        <div class="col-xs-10 col-md-10">
+            <h4 ng-show="getpaid">Send this link to your client</h4>
+            <small ng-show="getpaid">https://www.paypal.com/cgi-bin/webscr?&amp;cmd=_xclick&amp;business={{settings.email}}&amp;currency_code={{settings.currency}}&amp;amount={{ getTotal() + (getTotal() * tax /100) }}&amp;item_name={{label}}</small>  
+
+        </div>
+         <div class="col-xs-2 col-md-2">
+             <br>
+            <button   class="btn btn-block btn-primary vcenter" ng-click="showLink()">
+                Get Paid with Paypal
+            </button>
+         </div>
+    </div>
     <div class="row">
         <div class="col-xs-6">
 
@@ -56,7 +69,7 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th  class="noprint"></th>
+                <th class="noprint"></th>
 
                 <th>
                     <h4>Description</h4>
@@ -102,7 +115,7 @@
         </div>
         <div class="col-xs-2 text-right" ng-init="tax = 0">
             <p>{{ getTotal() }} <small>{{ settings.currency }}</small></p>
-            <p><input  type="number" max="100" min="0" ng-model="tax"> %</p>
+            <p><input type="number" max="100" min="0" ng-model="tax"> %</p>
             <p>{{ getTotal() + (getTotal() * tax /100) }} <small>{{ settings.currency }}</small></p>
 
         </div>

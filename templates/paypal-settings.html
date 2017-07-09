@@ -1,0 +1,30 @@
+<div class="container" ng-controller="SettingsCtrl">
+
+    <div class="jumbotron  col-md-6 col-md-offset-3 text-center">
+        <h3>Paypal Integration</h3>
+        <p>You can enable customers to make PayPal and credit card payments with only a few clicks, depending on the country</p>
+        <hr>
+
+
+        <form autocomplete="off">
+            <div class="form-group">
+                <input type="text" class="form-control" ng-model="settings.paypal.client_id" placeholder="Paypal Client ID">
+
+            </div>
+
+
+            <div class="form-group" ng-init="settings.paypal.env = sandbox">
+                <select type="text" class="form-control" ng-model="settings.paypal.env"> 
+                   <option value="Sandbox (Testing)">sandbox</option>
+                   <option value="live">Live</option>
+
+                </select>
+            </div>
+
+            <button ng-click="save()" class="btn btn-success btn-block">Save</button>
+            <hr>
+            <a ng-click="dashboard()" href="" class="btn btn-success btn-block">Dashboard</a>
+        </form>
+
+    </div>
+</div>
