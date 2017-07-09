@@ -144,7 +144,7 @@
         }
 
     });
-    app.controller('InvCtrl', function ($scope, $filter, $rootScope, $routeParams, $location, Storage) {
+    app.controller('InvCtrl', function ($scope, $filter, $rootScope, $routeParams, $location,$window, Storage) {
         Storage.get('settings').then(function (s) {
             $scope.settings = JSON.parse(s)
             $scope.invoice = {
@@ -184,6 +184,9 @@
             }
 
         }
+        $scope.print= function(){
+           $window.print()
+        }
 
         Storage.get('projects').then(function (p) {
 
@@ -210,7 +213,7 @@
 
             for (var i = 0; i < $scope.items.length; i++) {
                 var element = $scope.items[i];
-                console.log('total items', element)
+               
                 total += (element.price * element.qty)
             }
             return total;
@@ -243,6 +246,9 @@
             }
         };
     })
+
+
+    // Filters
     app.filter('time', function () {
         return function (time) {
             time = parseInt(time, 10);
