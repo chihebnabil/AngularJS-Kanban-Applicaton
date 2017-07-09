@@ -11,7 +11,7 @@
     <div class="row noprint">
         <div class="col-xs-10 col-md-10">
             <h4 ng-show="getpaid">Send this link to your client</h4>
-            <small ng-show="getpaid">https://www.paypal.com/cgi-bin/webscr?&amp;cmd=_xclick&amp;business={{settings.email}}&amp;currency_code={{settings.currency}}&amp;amount={{ getTotal() + (getTotal() * tax /100) }}&amp;item_name={{label}}&amp;no_shipping=1</small>  
+            <small ng-show="getpaid">https://www.paypal.com/cgi-bin/webscr?&amp;cmd=_xclick&amp;business={{settings.email}}&amp;currency_code={{settings.currency}}&amp;amount={{ getTotal() + (getTotal() * tax /100) }}&amp;item_name={{label +' '+ invoice.number}}&amp;no_shipping=1</small>  
 
         </div>
          <div class="col-xs-2 col-md-2">
