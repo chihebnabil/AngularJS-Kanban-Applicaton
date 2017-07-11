@@ -31,6 +31,10 @@
                 controller: "SettingsCtrl",
                 templateUrl: "templates/paypal-settings.html"
             })
+            .when("/paypal-fee-calculator", {
+                controller: "SettingsCtrl",
+                templateUrl: "templates/paypal-fee-calculator.html"
+            })
             .otherwise({
                 templateUrl: "templates/settings.html"
             });

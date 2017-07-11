@@ -144,7 +144,7 @@
         }
 
     });
-    app.controller('InvCtrl', function ($scope, $filter, $rootScope, $routeParams, $location,$window, Storage) {
+    app.controller('InvCtrl', function ($scope, $filter, $rootScope, $routeParams, $location, $window, Storage) {
         Storage.get('settings').then(function (s) {
             $scope.settings = JSON.parse(s)
             $scope.invoice = {
@@ -184,14 +184,15 @@
             }
 
         }
-        $scope.print= function(){
-           $window.print()
+        $scope.print = function () {
+            $window.print()
         }
 
         Storage.get('projects').then(function (p) {
 
             $rootScope.projects = JSON.parse(p)
             $scope.id = $routeParams.project
+            $scope.invoice.number = $scope.id
             $scope.rate = $rootScope.projects[$scope.id].rate
 
             $scope.label = $rootScope.projects[$scope.id].label
@@ -213,7 +214,7 @@
 
             for (var i = 0; i < $scope.items.length; i++) {
                 var element = $scope.items[i];
-               
+
                 total += (element.price * element.qty)
             }
             return total;
@@ -229,6 +230,40 @@
     })
     app.controller('SettingsCtrl', function ($scope, $rootScope, $window, Storage) {
 
+
+        $scope.calculator = function () {
+            $scope.sum = 100;
+            $scope.$watch('sum', function (sum) {
+                $scope.PayPalRate = 0.049
+                $scope.PayPalFee = (sum * $scope.PayPalRate) + 0.3
+                $scope.MoneyWillGet = sum - $scope.PayPalFee
+                $scope.MoneyShouldDemand = (sum + 0.3) / (1 - $scope.PayPalRate)
+                switch (true) {
+                    case (sum >= 0 && sum <= 3000):
+                        //alert(sum2);
+                        //alert(sum- fee);
+                        break;
+                    case (sum > 3000 && sum <= 10000):
+                        $scope.PayPalRate = 0.044;
+
+
+                        break;
+                    case (sum > 10000 && sum <= 100000):
+                        $scope.PayPalRate = 0.042;
+
+
+                        break;
+                    case (sum > 100000):
+                        $scope.PayPalRate = 0.039;
+
+
+                        break;
+
+                }
+            })
+        }
+
+
         Storage.get('settings').then(function (s) {
             $scope.settings = JSON.parse(s)
         })
@@ -237,6 +272,7 @@
             Storage.set('settings', JSON.stringify($scope.settings))
             $window.history.back();
         }
+
         // Link to dashboard
         $scope.dashboard = function () {
             if (chrome.tabs) {
@@ -265,6 +301,11 @@
     app.filter('round', function () {
         return function (value) {
             return Math.round(value);
+        }
+    });
+     app.filter('round2dec', function () {
+        return function (value) {
+            return Math.round(value * 100) / 100;
         }
     });
 

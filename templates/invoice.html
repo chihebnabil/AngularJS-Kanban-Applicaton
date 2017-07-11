@@ -11,18 +11,25 @@
     <div class="row noprint">
         <div class="col-xs-10 col-md-10">
             <h4 ng-show="getpaid">Send this link to your client</h4>
-            <small ng-show="getpaid">https://www.paypal.com/cgi-bin/webscr?&amp;cmd=_xclick&amp;business={{settings.email}}&amp;currency_code={{settings.currency}}&amp;amount={{ getTotal() + (getTotal() * tax /100) }}&amp;item_name={{label +' '+ invoice.number}}&amp;no_shipping=1</small>  
+            <small ng-show="getpaid">https://www.paypal.com/cgi-bin/webscr?&amp;cmd=_xclick&amp;business={{settings.email}}&amp;currency_code={{settings.currency}}&amp;amount={{ getTotal() + (getTotal() * tax /100) }}&amp;item_name={{label +'-'+ invoice.number}}&amp;no_shipping=1</small>
 
         </div>
-         <div class="col-xs-2 col-md-2">
-             <br>
-            <button   class="btn btn-block btn-primary vcenter" ng-click="showLink()">
-                Get Paid with <i class="fa fa-paypal" aria-hidden="true"></i>
+        <div class="col-xs-2 col-md-2">
+            <br>
+            <div class="btn-group btn-group-justified">
+                <div class="btn-group">
+                    <button class="btn  btn-primary vcenter" ng-click="showLink()">
+                <i class="fa fa-paypal" aria-hidden="true"></i>
             </button>
-              <button   class="btn btn-block btn-primary" ng-click="print()">
+                </div>
+                <div class="btn-group">
+                    <button class="btn  btn-primary" ng-click="print()">
                 <i class="fa fa-print" aria-hidden="true"></i>
             </button>
-         </div>
+                </div>
+                
+            </div>
+        </div>
     </div>
     <div class="row">
         <div class="col-xs-6">
@@ -30,7 +37,7 @@
         </div>
         <div class="col-xs-6 text-right">
             <h1>INVOICE</h1>
-            <h1><small>Invoice #<input type="text" style="text-align:right;max-width:50px;" ng-model="invoice.number"></small></h1>
+            <h1><small>Invoice #<input type="number" min="0" max="1000" style="text-align:right;max-width:70px;" ng-model="invoice.number"></small></h1>
         </div>
     </div>
     <div class="row">
@@ -100,7 +107,7 @@
             <tr>
                 <td class="noprint"><button ng-click="add()" class="btn btn-primary"><i class="fa fa-plus-circle" aria-hidden="true"></i></button></td>
 
-                <td class="noprint" ><input class="form-control" ng-model="item.name"></td>
+                <td class="noprint"><input class="form-control" ng-model="item.name"></td>
                 <td class="text-right noprint"><input class="form-control" type="number" min="1" ng-model="q"></td>
                 <td class="noprint"><input class="form-control" type="number" min="1" ng-model="r"></td>
 
@@ -119,7 +126,7 @@
         <div class="col-xs-2 text-right" ng-init="tax = 0">
             <p>{{ getTotal() }} <small>{{ settings.currency }}</small></p>
             <p><input type="number" max="100" min="0" ng-model="tax"> %</p>
-            <p>{{ getTotal() + (getTotal() * tax /100) }} <small>{{ settings.currency }}</small></p>
+            <p>{{ getTotal() + (getTotal() * tax /100) | round2dec }} <small>{{ settings.currency }}</small></p>
 
         </div>
     </div>
