@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/fonts/css/font-awesome.min.css">
- 
+
 </head>
 
 <body>
@@ -21,7 +21,7 @@
             <div class="collapse navbar-collapse" id="navcol-1" ng-if="navbar">
                 <ul class="nav navbar-nav navbar-right">
 
-                   
+
 
                 </ul>
             </div>
@@ -35,13 +35,13 @@
             <h2>Projects</h2>
             <small>Select Or Create New Project</small>
             <hr>
-          
+
             <div class="alert alert-info" ng-repeat="p in projects track by $index ">
                 <button type="button" ng-click="remove($index)" class="close" data-dismiss="alert" aria-label="Close"><span class="fa fa-close" aria-hidden="true"></span></button>
                 <a href="index.html#!/project/{{$index}}">{{p.label}}</a>
             </div>
             <hr>
-  <form name="newProjectForm" ng-submit="newProject(newProjectForm.$valid)" novalidate>
+            <form name="newProjectForm" ng-submit="newProject(newProjectForm.$valid)" novalidate>
                 <div class="form-group">
                     <input type="text" class="form-control" ng-model="projectName" required placeholder="Project Name">
 
@@ -64,10 +64,10 @@
         -->
 
     <script type="text/javascript" src="bower_components/angular/angular.js"></script>
-    <script src="assets/js/libs/angular.route.min.js"></script>
-
+    <script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="bower_components/ngDraggable/ngDraggable.js"></script>
     <script src="assets/js/libs/ngDraggble.js"></script>
-   <script type="text/javascript" src="bower_components/codemirror/lib/codemirror.js"></script>
+    <script type="text/javascript" src="bower_components/codemirror/lib/codemirror.js"></script>
     <script type="text/javascript" src="bower_components/angular-ui-codemirror/ui-codemirror.js"></script>
 
     <script src="assets/js/vars.js"></script>

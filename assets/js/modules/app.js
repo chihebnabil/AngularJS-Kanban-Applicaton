@@ -79,7 +79,7 @@
         }
         $scope.new = function (parent, data) {
             if (data != null) {
-                $scope.lists[parent].tasks.push({ name: "" + data + "", text : "// your code here", time: 0, qty: 1 });
+                $scope.lists[parent].tasks.push({ name: "" + data + "", text : "// text or code snippet", time: 0, qty: 1 });
                 $scope.update($scope.lists)
             }
         }
