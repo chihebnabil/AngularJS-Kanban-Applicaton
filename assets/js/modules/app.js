@@ -34,14 +34,18 @@
         $scope.editItem = function (parent, index) {
             $scope.showModal = true
             console.log($scope.task)
+            $scope.task.index = index
+            $scope.task.parent = parent
             $scope.task.name = $scope.lists[parent].tasks[index].name
             $scope.task.text = $scope.lists[parent].tasks[index].text
             // $scope.update($scope.lists)
         }
         $scope.editItemSave = function (data) {
-            //    console.log(data[parent])
-            //    data[parent].tasks[index].name = $scope.task.name
-            //    data[parent].tasks[index].text = $scope.task.text
+            console.log(data[parent])
+            data[$scope.task.parent].tasks[$scope.task.index].name = $scope.task.name
+            data[$scope.task.parent].tasks[$scope.task.index].text = $scope.task.text
+            $scope.update($scope.lists)
+            $scope.showModal = false
         }
 
         $scope.updateRate = function (v) {
@@ -79,7 +83,7 @@
         }
         $scope.new = function (parent, data) {
             if (data != null) {
-                $scope.lists[parent].tasks.push({ name: "" + data + "", text : "// text or code snippet", time: 0, qty: 1 });
+                $scope.lists[parent].tasks.push({ name: "" + data + "", text: "// text or code snippet", time: 0, qty: 1 });
                 $scope.update($scope.lists)
             }
         }
