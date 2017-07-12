@@ -1,0 +1,21 @@
+{
+  "name": "Taskii",
+  "description": "Offline Project & Tasks Manager allow freelancers to :Track their time , Organize tasks in a kanban board,Create invoices",
+  "main": "index.js",
+  "authors": [
+    "Chiheb Nabil"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/chihebnabil/AngularJS-Kanban-Applicaton",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-codemirror": "^0.3.0"
+  }
+}

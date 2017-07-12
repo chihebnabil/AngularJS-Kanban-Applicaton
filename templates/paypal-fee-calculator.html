@@ -1,6 +1,7 @@
 <div class="container">
 
     <div class="jumbotron  col-md-6 col-md-offset-3 text-center">
+        <br>
         <h3>Paypal Fee Calculator</h3>
         <hr>
 
@@ -10,26 +11,33 @@
                 Enter an amount:
             </p>
             <div class="form-group">
-                <input type="number" min="10" class="form-control" ng-model="sum"  placeholder="Money">
+                <input type="number" min="1" class="form-control" ng-model="sum" placeholder="Money">
 
             </div>
 
             <p>
-              PayPal takes <b>{{PayPalFee | round2dec}}  {{settings.currency}}</b>
+                PayPal takes <b>{{PayPalFee | round2dec}}  {{settings.currency}}</b>
             </p>
             <p>You'll receive</p>
             <p>
                 <b>  {{MoneyWillGet | round2dec}}  {{settings.currency}}</b>
             </p>
             <p>
-               If you want  <b>   {{sum}} {{settings.currency}} </b> you should ask for  <b>{{ MoneyShouldDemand | round2dec}} {{settings.currency}} </b> 
+                If you want <b>   {{sum}} {{settings.currency}} </b> you should ask for <b>{{ MoneyShouldDemand | round2dec}} {{settings.currency}} </b>
             </p>
 
 
 
-            <hr>
-            <a ng-click="dashboard()" href="" class="btn btn-success btn-block">Dashboard</a>  | <a  href="#!/settings">Settings</a> | <a  href="#!/paypal-fee-calculator">Paypal Fee Calculator</a>
+
+
         </form>
+        <div class="footer">
+            <hr>
+            <div class="text-center">
+                <a ng-click="dashboard()" href="" class="btn btn-success btn-block">Dashboard</a> | <a href="#!/settings">Settings</a>                | <a href="#!/paypal-fee-calculator">Paypal Fee Calculator</a>
+            </div>
+            <br>
+        </div>
 
     </div>
 </div>

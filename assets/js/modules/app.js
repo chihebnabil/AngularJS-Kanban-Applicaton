@@ -8,6 +8,7 @@
         $rootScope.navbar = true
         var id = $routeParams.id
         var projects = []
+
         $scope.rate = 0;
         Storage.get('projects').then(function (p) {
             projects = JSON.parse(p)
@@ -20,7 +21,28 @@
         Storage.get('settings').then(function (s) {
             $scope.settings = JSON.parse(s)
         })
+        // Code editor config
+        $scope.editorOptions = {
+            lineWrapping: true,
+            lineNumbers: true,
+            htmlMode: true,
+            mode: 'php'
+        };
 
+        // SHows The Modal when double click on any tasks
+        $scope.task = { name: '', text: ' ' }
+        $scope.editItem = function (parent, index) {
+            $scope.showModal = true
+            console.log($scope.task)
+            $scope.task.name = $scope.lists[parent].tasks[index].name
+            $scope.task.text = $scope.lists[parent].tasks[index].text
+            // $scope.update($scope.lists)
+        }
+        $scope.editItemSave = function (data) {
+            //    console.log(data[parent])
+            //    data[parent].tasks[index].name = $scope.task.name
+            //    data[parent].tasks[index].text = $scope.task.text
+        }
 
         $scope.updateRate = function (v) {
             projects[id].rate = v
@@ -303,7 +325,7 @@
             return Math.round(value);
         }
     });
-     app.filter('round2dec', function () {
+    app.filter('round2dec', function () {
         return function (value) {
             return Math.round(value * 100) / 100;
         }

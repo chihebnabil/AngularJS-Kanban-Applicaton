@@ -6,9 +6,10 @@
 
         <hr>
         <form>
+            <br>
             <div class="form-group">
-<label for="board">Select a project</label>
-                <select class="form-control" name="board" ng-model="board" placeholder="Select a board" >
+                <label for="board">Select a project</label>
+                <select class="form-control" name="board" ng-model="board" placeholder="Select a board">
                     <option ng-repeat="p in projects track by $index " value="{{$index}}">{{p.label}}</option>
                 </select>
 
@@ -26,8 +27,15 @@
                 <button type="button" ng-disabled="!start" ng-click="save()" class="btn btn-danger ">Save</button>
                 <button type="button" ng-disabled="!start" ng-click="stopTimer()" class="btn btn-default ">Reset</button>
             </div>
-            <hr>
-            <a href="" ng-click="dashboard()">Dashboard</a> | <a  href="#!/settings">Settings</a> | <a  href="#!/paypal-fee-calculator">Paypal Fee Calculator</a> 
+
         </form>
+        <div class="footer">
+            <hr>
+            <div class="text-center">
+                <a ng-click="dashboard()" href="" class="btn btn-success btn-block">Dashboard</a> | <a href="#!/settings">Settings</a>                | <a href="#!/paypal-fee-calculator">Paypal Fee Calculator</a>
+            </div>
+            <br>
+        </div>
+
     </div>
 </div>

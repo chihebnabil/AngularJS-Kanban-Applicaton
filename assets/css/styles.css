@@ -136,3 +136,4 @@ color: white !important ;
        display:none;
    }
 }
+.ace_editor { height: 200px; }
