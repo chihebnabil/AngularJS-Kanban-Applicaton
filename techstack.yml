@@ -1,0 +1,109 @@
+repo_name: chihebnabil/AngularJS-Kanban-Applicaton
+report_id: 1292fb1c9c81a33a690c7a17c7df5649
+version: 0.1
+repo_type: Public
+timestamp: '2024-02-08T19:18:57+00:00'
+requested_by: chihebnabil
+provider: github
+branch: master
+detected_tools_count: 8
+tools:
+- name: CSS 3
+  description: The latest evolution of the Cascading Style Sheets language
+  website_url: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/6727/css.png
+  detection_source_url: https://github.com/chihebnabil/AngularJS-Kanban-Applicaton
+  detection_source: Repo Metadata
+- name: JavaScript
+  description: Lightweight, interpreted, object-oriented language with first-class
+    functions
+  website_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1209/javascript.jpeg
+  detection_source_url: https://github.com/chihebnabil/AngularJS-Kanban-Applicaton
+  detection_source: Repo Metadata
+- name: Git
+  description: Fast, scalable, distributed revision control system
+  website_url: http://git-scm.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Version Control System
+  image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/chihebnabil/AngularJS-Kanban-Applicaton
+  detection_source: Repo Metadata
+- name: gulp
+  description: The streaming build system
+  website_url: http://gulpjs.com/
+  version: 3.9.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: JS Build Tools / JS Task Runners
+  image_url: https://img.stackshare.io/service/844/iruTC031.png
+  detection_source_url: https://github.com/chihebnabil/AngularJS-Kanban-Applicaton/blob/master/package.json
+  detection_source: package.json
+  last_updated_by: chihebnabil
+  last_updated_on: 2017-07-02 13:06:08.000000000 Z
+- name: npm
+  description: The package manager for JavaScript.
+  website_url: https://www.npmjs.com/
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Front End Package Manager
+  image_url: https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png
+  detection_source_url: https://github.com/chihebnabil/AngularJS-Kanban-Applicaton/blob/master/package.json
+  detection_source: package.json
+  last_updated_by: chihebnabil
+  last_updated_on: 2017-06-29 13:27:44.000000000 Z
+- name: gulp-minify
+  description: Js minify plugin for gulp
+  package_url: https://www.npmjs.com/gulp-minify
+  version: 1.0.0
+  license: BSD-2-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/17403/default_c11ea7d401c11f11d89301d0302509ab7d72e5ac.png
+  detection_source_url: https://github.com/chihebnabil/AngularJS-Kanban-Applicaton/blob/master/package.json
+  detection_source: package.json
+  last_updated_by: chihebnabil
+  last_updated_on: 2017-07-02 13:06:08.000000000 Z
+- name: gulp-ng-annotate
+  description: Add angularjs dependency injection annotations with ng-annotate
+  package_url: https://www.npmjs.com/gulp-ng-annotate
+  version: 2.0.0
+  license: CC0-1.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16996/default_7a9e63a9526bf5da91e7a6f9f792b13e3543a875.png
+  detection_source_url: https://github.com/chihebnabil/AngularJS-Kanban-Applicaton/blob/master/package.json
+  detection_source: package.json
+  last_updated_by: chihebnabil
+  last_updated_on: 2017-07-02 13:06:08.000000000 Z
+- name: gulp-webserver
+  description: Gulp plugin to run a local webserver with LiveReload
+  package_url: https://www.npmjs.com/gulp-webserver
+  version: 0.9.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/17173/default_21a9522c66101ebad0e63609af74acb35fe29a0a.png
+  detection_source_url: https://github.com/chihebnabil/AngularJS-Kanban-Applicaton/blob/master/package.json
+  detection_source: package.json
+  last_updated_by: chihebnabil
+  last_updated_on: 2017-07-02 13:06:08.000000000 Z
